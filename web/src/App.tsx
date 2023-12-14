@@ -1,3 +1,4 @@
+/*
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -28,6 +29,45 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
+    </>
+  )
+}
+
+export default App */
+
+
+import { useState } from 'react'
+import './App.css'
+import Button from './components/Button.tsx'
+
+function App() {
+
+  return (
+    <>
+      <div className="container-fluid text-center">
+        <div className="margin1"></div>
+        <div className="row">
+          <h1 className="Uname">RBK University</h1>
+        </div>
+        <div className="row margin2">
+          <div className="col">
+            <div className="row">
+              <div className="col-3 col-md-5"></div>
+              <div className="col-9 col-md-7">
+                <Button text="Log in" />
+              </div>
+            </div>  
+          </div>
+          <div className="col">
+            <div className="row">
+              <div className="col-9 col-md-7">
+                <Button text="Sign up" />
+              </div>
+              <div className="col-3 col-md-5"> </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   )
 }

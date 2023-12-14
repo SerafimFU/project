@@ -72,7 +72,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-image: url(../files/Greece.jpeg);
+  background-image: url(../images/Greece.jpeg);
   background-position: center center;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -94,84 +94,3 @@ textarea {
   outline            : 0;
   box-shadow         : none;
 }
-
-.Uname {
-  font-size: calc(1rem + 4vw);
-  font-weight: 600;
-  color: transparent;
-  background-clip: text;
-  background-image: linear-gradient(to left, #09cae8, #34495e);
-  -webkit-background-clip: text;
-  text-align: center;
-  position: relative;
-  padding: 4vh;
-}
-
-.button {
-  border: 0;
-  background: #34495e;
-  display: block;
-  text-align: center;
-  font-size: 99%;
-  border: 2px solid #09cae8;
-  height: calc(2rem + 3vh);
-  width: calc(3rem + 15vw);
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  cursor: pointer;
-  position: absolute;
-  top: 45vh;
-  left: 35vw;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
-
-.button:hover {
-  background: #09cae8;
-  transition: 0.5s;
-}
-
-.button:active {
-  background: #09cae8;
-  border: 2px solid #09cae8;
-  height: calc(2rem + 2.7vh);
-  width: calc(3rem + 14vw);
-  top: 44.9vh;
-  left: 35vw;
-  }
-
-.button2 {
-  border: 0;
-  background: #34495e;
-  display: block;
-  text-align: center;
-  font-size: 99%;
-  border: 2px solid #09cae8;
-  height: calc(2rem + 3vh);
-  width: calc(3rem + 15vw);
-  outline: none;
-  color: white;
-  border-radius: 24px;
-  overflow: hidden;
-  cursor: pointer;
-  position: absolute;
-  top: 45vh;
-  left: 65vw;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
-
-.button2:hover {
-  background: #09cae8;
-  transition: 0.5s;
-}
-
-.button2:active {
-  background: #09cae8;
-  border: 2px solid #09cae8;
-  height: calc(2rem + 2.7vh);
-  width: calc(3rem + 14vw);
-  top: 44.9vh;
-  left: 65vw;
-  }
