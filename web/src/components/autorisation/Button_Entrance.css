@@ -22,3 +22,8 @@
   height: calc(2rem + 2.7vh);
   width: calc(3rem + 14vw);
   }
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
