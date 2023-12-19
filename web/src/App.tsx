@@ -35,40 +35,18 @@ function App() {
 
 export default App */
 
-
-import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Entrance from './components/entrance/Entrance.tsx'
 import './App.css'
-import Button from './components/Button.tsx'
 
 function App() {
 
   return (
-    <>
-      <div className="container-fluid text-center">
-        <div className="margin1"></div>
-        <div className="row">
-          <h1 className="Uname">RBK University</h1>
-        </div>
-        <div className="row margin2">
-          <div className="col">
-            <div className="row">
-              <div className="col-3 col-md-5"></div>
-              <div className="col-9 col-md-7">
-                <Button text="Log in" />
-              </div>
-            </div>  
-          </div>
-          <div className="col">
-            <div className="row">
-              <div className="col-9 col-md-7">
-                <Button text="Sign up" />
-              </div>
-              <div className="col-3 col-md-5"> </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Entrance />} />
+      </Routes>
+    </BrowserRouter>
   )
 }
 
