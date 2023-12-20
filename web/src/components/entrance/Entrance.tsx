@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
+import Button from '../Button.tsx'
 import './Entrance.css'
-import Button from './Button_Entrance.tsx'
 
 function Entrance() {
     useEffect(() => {
@@ -19,14 +19,14 @@ function Entrance() {
                         <div className="row">
                             <div className="col-3 col-md-5"></div>
                             <div className="col-9 col-md-7">
-                                <Button text="Log in" link="/autorisation" />
+                                <Button text="Log in" style="button_entrance" link="/autorisation" />
                             </div>
                         </div>  
                     </div>
                     <div className="col">
                         <div className="row">
                             <div className="col-9 col-md-7">
-                                <Button text="Sign up" link="/registration" />
+                                <Button text="Sign up" style="button_entrance" link="/registration" />
                             </div>
                             <div className="col-3 col-md-5"> </div>
                         </div>

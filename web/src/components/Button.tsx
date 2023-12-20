@@ -1,9 +1,7 @@
-import './Button_Entrance.css'
-
-function Button(props: {text: string, link: string}) {
+function Button(props: {text: string, style: string, link: string}) {
     return (
         <a href={props.link}>
-            <button className="button">
+            <button className={props.style}>
                 {props.text}
             </button>
         </a>

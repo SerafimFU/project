@@ -1,9 +1,21 @@
+.margin03 {
+  margin-top: 3vh;
+}
+
 .margin1 {
   margin-top: 10vh;
 }
 
+.margin15 {
+  margin-top: 15vh;
+}
+
 .margin2 {
   margin-top: 20vh;
+}
+
+.margin3 {
+  margin-top: 30vh;
 }
 
 a {
