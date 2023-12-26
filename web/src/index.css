@@ -90,3 +90,11 @@ textarea {
   outline            : 0;
   box-shadow         : none;
 }
+
+@media (min-height: 1px) {
+  @media (max-height: 500px) {
+  body {
+    overflow-y: scroll;
+  }
+}
+}

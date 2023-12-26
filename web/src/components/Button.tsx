@@ -1,6 +1,6 @@
-function Button(props: {text: string, style: string, link: string}) {
+function Button(props: {text: string, style: string, path: string}) {
     return (
-        <a href={props.link}>
+        <a href={props.path}>
             <button className={props.style}>
                 {props.text}
             </button>

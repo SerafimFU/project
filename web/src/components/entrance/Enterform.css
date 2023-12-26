@@ -1,0 +1,124 @@
+.enterbox {
+  width: 360px;
+  height: 460px;
+  padding: 30px;
+  position: relative;
+  background: #34495e;
+  text-align: center;
+  border-radius: 0.7em;
+  margin-top: 15vh;
+}
+
+.enterbox:hover {
+  box-shadow: 1px 1px 15px 1px #09cae8;
+  transition: 1s;
+}
+
+.enterbox h1 {
+  font-size: calc(2rem + 30%);
+  font-weight: 600;
+  color: #09cae8;
+  text-align: center;
+  position: relative;
+}
+
+.inputplace {
+  width: calc(300px * 0.92);
+  height: calc(400px * 0.075);
+  background: none;
+  border: 1px solid #ffffff;
+  display: block;
+  margin: calc(400px * 0.05) auto;
+  outline: none;
+  font-size: 100%;
+  color: #ffffff;
+}
+
+.inputplace:focus {
+  border-color: #09cae8;
+  box-shadow: 0.01px 0.01px 15px 0.01px #09cae8;
+}
+
+.inputplace0 {
+  width: calc(300px * 0.4312);
+  height: calc(400px * 0.075);
+  background: none;
+  border: 1px solid #ffffff;
+  display: inline;
+  margin: auto calc(360px * 0.023);
+  outline: none;
+  font-size: 100%;
+  color: #ffffff;
+}
+
+.inputplace0:focus {
+  border-color: #09cae8;
+  box-shadow: 0.01px 0.01px 15px 0.01px #09cae8;
+}
+
+.button_autorisation {
+  width: calc(300px * 0.92);
+  height: calc(400px * 0.075);
+  background: #09cae8;
+  border: 1px solid #ffffff;
+  display: block;
+  margin: auto;
+  outline: none;
+  font-size: 105%;
+  color: #ffffff;
+}
+
+.link { 
+  text-decoration: none; 
+  color:black;
+  font-size: 1em;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+.inf {
+  font-size: small;
+  color: #ffffff;
+  text-align: justify;
+  position: static;
+  margin: auto calc(360px * 0.035);
+}
+
+@media (min-height: 1px) {
+  @media (max-height: 500px) {
+  .enterbox {
+      height: auto;
+      margin-bottom: 10vh;
+  }
+}
+}
+
+@media (min-width: 370px) {
+  @media (max-width: 500px) {
+    .enterbox {
+        max-width: 350px;
+        }
+    .inputplace0 {
+        margin: auto calc(350px * 0.022);
+        }
+    .inf {
+        margin: auto calc(360px * 0.025);
+        }   
+  }
+  }
+
+@media (min-width: 1px) {
+  @media (max-width: 369px) {
+    .enterbox {
+        max-width: 335px;
+        }
+    .inputplace0 {
+        margin: auto calc(335px * 0.022);
+        }
+    .inf {
+        margin: auto;
+        } 
+  }
+  }

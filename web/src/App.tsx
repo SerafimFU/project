@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Entrance from './components/entrance/Entrance.tsx'
-import Autorisation from './components/autorisation/Autorisation.tsx'
+import Main from './components/main/Main.tsx'
+import Enterform from './components/entrance/Enterform.tsx'
 import './App.css'
 
 function App() {
@@ -8,8 +8,11 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Entrance />} />
-        <Route path="/autorisation" element={<Autorisation />} />
+        <Route path="/" element={<Main />} />
+        <Route path="/autorisation" element={<Enterform />} />
+        <Route path="/registration" element={<Enterform />} />
+        <Route path="/forgot_password" element={<Enterform />} />
+        <Route path="/change_password" element={<Enterform />} />
       </Routes>
     </BrowserRouter>
   )
