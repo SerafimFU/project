@@ -39,6 +39,11 @@
   box-shadow: 0.01px 0.01px 15px 0.01px #09cae8;
 }
 
+.inputplace:invalid:focus {
+  border-color: red;
+  box-shadow: none;
+}
+
 .inputplace0 {
   width: calc(300px * 0.4312);
   height: calc(400px * 0.075);
@@ -54,6 +59,11 @@
 .inputplace0:focus {
   border-color: #09cae8;
   box-shadow: 0.01px 0.01px 15px 0.01px #09cae8;
+}
+
+.inputplace0:invalid:focus {
+  border-color: red;
+  box-shadow: none;
 }
 
 .button_autorisation {

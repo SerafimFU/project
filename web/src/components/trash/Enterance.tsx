@@ -1,4 +1,5 @@
-import { useLocation } from 'react-router-dom'
+/*
+import { NavLink, useLocation } from 'react-router-dom'
 import { useEffect } from 'react';
 import Submit from '../Submit.tsx'
 import './Enterform.css'
@@ -20,12 +21,88 @@ function Enterform() {
     }, []);
     let location = useLocation();
 
+    const submitHandler = async (event: React.FormEvent) => {
+        event.preventDefault();
+        const target = event.target as typeof event.target & {
+            login: { value: string };
+            pass: { value: string };
+            name: { value: string };
+            surname: { value: string };
+            email: { value: string };
+            phone: { value: string };
+            pass1: { value: string };
+            pass2: { value: string };
+        };
+       
+        if (location.pathname === "/autorisation") {
+            const login = target.login.value;
+            const pass = target.pass.value;
+            console.log(login);
+            console.log(pass);
+
+            const response = await fetch('http://localhost:3000', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                login: login,
+                password: pass,
+            })
+            });
+
+            if(response.ok) {
+                console.log(await response.json())
+            } else {
+                console.log(response.status)
+            }
+        }
+
+        if (location.pathname === "/registration") {
+            const name = target.name.value;
+            const surname = target.surname.value;
+            const email = target.email.value;
+            const phone = target.phone.value;
+            const pass1 = target.pass1.value;
+            const pass2 = target.pass2.value;
+            console.log(name);
+            console.log(surname);
+            console.log(email);
+            console.log(phone);
+            console.log(pass1);
+            console.log(pass2);
+
+            const response = await fetch('http://localhost:3000', {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: name,
+                surname: surname,
+                email: email,
+                phone_nomber: phone,
+                password: pass1,
+            })
+            });
+
+            if(response.ok) {
+                console.log(await response.json())
+            } else {
+                console.log(response.status)
+            }
+        }
+        
+        console.log(location.pathname)
+    }
 
     return (
         <div className="container-fluid text-center">
             <div className="row">
                 <div className="col">
-                    <form className="enterbox mx-auto" action="">
+                    <form className="enterbox mx-auto" onSubmit={submitHandler}>
                         {location.pathname === "/autorisation" && 
                             <>  
                                 <div className="margin03" />
@@ -36,9 +113,9 @@ function Enterform() {
                                 <div className="margin4p" />
                                 <Submit text="Log in" style="button_autorisation" />
                                 <div className="margin4p" />
-                                <a href="/forgot_password" className="link">Forgot password?</a>
+                                <NavLink to="/forgot_password" className="link">Forgot password?</NavLink>
                                 <div className="margin01" />
-                                <a href="/registration" className="link">Create new account</a>
+                                <NavLink to="/registration" className="link">Create new account</NavLink>
                             </>
                         }
                         {location.pathname === "/registration" && 
@@ -48,13 +125,13 @@ function Enterform() {
                                 <div className="margin03" />
                                 <input className="inputplace0" type="text" name="name" placeholder="Name" />
                                 <input className="inputplace0" type="text" name="surname" placeholder="Surname" />
-                                <input className="inputplace" type="text" name="login" placeholder="Email" />
-                                <input className="inputplace" type="text" name="login" placeholder="Phone number" />
-                                <input className="inputplace" type="password" name="pass" placeholder="Password" />
-                                <input className="inputplace" type="password" name="pass" placeholder="Repeat password" />
+                                <input className="inputplace" type="text" name="email" placeholder="Email" />
+                                <input className="inputplace" type="text" name="phone" placeholder="Phone number" />
+                                <input className="inputplace" type="password" name="pass1" placeholder="Password" />
+                                <input className="inputplace" type="password" name="pass2" placeholder="Repeat password" />
                                 <Submit text="Sign up" style="button_autorisation" />
                                 <div className="margin2p" />
-                                <a href="/autorisation" className="link">Log in</a>
+                                <NavLink to="/autorisation" className="link">Log in</NavLink>
                             </>
                         }
                         {location.pathname === "/forgot_password" && 
@@ -67,7 +144,7 @@ function Enterform() {
                                 <div className="margin4p" />
                                 <Submit text="Change password" style="button_autorisation" />
                                 <div className="margin2p" />
-                                <a href="/autorisation" className="link">Log in</a>
+                                <NavLink to="/autorisation" className="link">Log in</NavLink>
                             </>
                         }
                         {location.pathname === "/change_password" && 
@@ -89,4 +166,4 @@ function Enterform() {
     )
 }
 
-export default Enterform
+export default Enterform */
