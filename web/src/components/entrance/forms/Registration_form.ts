@@ -6,7 +6,7 @@ async function submitHandler(event: React.FormEvent) {
         email: { value: string };
         phone: { value: string };
         pass1: { value: string };
-        pass2: { value: string, placeholder: string };
+        pass2: { value: string, placeholder: string, className: string };
     }
     const name = target.name.value;
     const surname = target.surname.value;
@@ -24,7 +24,6 @@ async function submitHandler(event: React.FormEvent) {
     if(pass1 === pass2) {
         const response = await fetch('http://localhost:3000', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
             "Content-Type": "application/json"
         },
@@ -45,6 +44,7 @@ async function submitHandler(event: React.FormEvent) {
     }  else {
         target.pass2.value = ""
         target.pass2.placeholder = "Passwords are not the same"
+        target.pass2.className = "inputplacepass2"
     }
 }
 

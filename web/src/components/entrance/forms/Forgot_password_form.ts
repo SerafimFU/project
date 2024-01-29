@@ -8,7 +8,6 @@ async function submitHandler(event: React.FormEvent) {
 
     const response = await fetch('http://localhost:3000', {
     method: 'POST',
-    mode: 'no-cors',
     headers: {
         "Content-Type": "application/json"
     },

@@ -1,4 +1,4 @@
-async function submitHandler(event: React.FormEvent) {
+async function SubmitHandler(event: React.FormEvent, callback: () => any, setDisplayError: (value: number) => void) {
         event.preventDefault();
         const target = event.target as typeof event.target & {
             login: { value: string };
@@ -9,24 +9,34 @@ async function submitHandler(event: React.FormEvent) {
         console.log(login);
         console.log(pass);
 
-        const response = await fetch('http://localhost:3000', {
+        setDisplayError(0);
+        
+        const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
-        mode: 'no-cors',
         headers: {
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            login: login,
+            username: login,
             password: pass,
         })
         });
     
         if(response.ok) {
-            console.log(await response.json())
+            console.log(response),
+            callback()
         } else {
             console.log(response.status)
+            if (response.status == 401) {
+                console.log('Non Autorisative')
+                setDisplayError(1);
+            }
+            else {
+                console.log('Non Conect')
+                setDisplayError(2);
+            }
         }
 
 }
 
-export default submitHandler
+export default SubmitHandler

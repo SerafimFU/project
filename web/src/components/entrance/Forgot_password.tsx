@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import Submit from '../Submit.tsx'
-import submitHandler from './forms/Forgot_password_form.tsx'
-import invalidInput from './forms/Form_message.tsx'
+import submitHandler from './forms/Forgot_password_form.ts'
+import invalidInput from './forms/Form_message.ts'
 import './Enterance.css'
 
 function Forgot_password() {

@@ -36,5 +36,11 @@ nestcli:
 	-w /bg \
 	node:lts node node_modules/@nestjs/cli/bin/nest.js $(filter-out $@,$(MAKECMDGOALS))
 
+yarnpas: 
+	docker run --rm --tty \
+	-v ./nest:/bg \
+	-w /bg \
+	node:lts yarn add @nestjs/passport passport passport-local
+
 %:
 	@:

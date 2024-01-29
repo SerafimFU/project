@@ -1,22 +1,42 @@
 import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom'
 import Submit from '../Submit.tsx'
-import submitHandler from './forms/Autorisation_form.tsx'
-import invalidInput from './forms/Form_message.tsx';
+import SubmitHandler from './forms/Autorisation_form.ts'
+import invalidInput from './forms/Form_message.ts'
 import './Enterance.css'
 
-function Autorisation() {
+type AuthProps = {
+    handleLogin: () => void
+    setDisplayError (value: number) : void
+    displayError: number;
+}
+
+function Autorisation(props: AuthProps) {
     useEffect(() => {
         document.title = "Autorisation";
     }, []);
     
     const validInput=(event: React.FormEvent) => {(event.target as HTMLInputElement).setCustomValidity('')}
 
+    const submitForm = (event: React.FormEvent) => {
+        SubmitHandler(event, props.handleLogin, props.setDisplayError)
+    }
+    
+    function ErrorMessage() {
+        if (props.displayError === 1) {
+            return <div className="errors mx-auto">Incorrect login or password</div>
+        }
+        if (props.displayError === 2) {
+            return <div className="errors mx-auto">No conection to server</div>
+        }
+    }
+
+
     return (
         <div className="container-fluid text-center">
             <div className="row">
                 <div className="col">
-                    <form className="enterbox mx-auto" id="autorisation-form" onSubmit={submitHandler}>
+                    <form className="enterbox mx-auto" id="autorisation-form" onSubmit={submitForm}>
                         <div className="margin03" />
                         <h1>Wellcome back</h1>
                         <div className="margin05" />
@@ -29,6 +49,7 @@ function Autorisation() {
                         <div className="margin01" />
                         <NavLink to="/registration" className="link">Create new account</NavLink>
                     </form>
+                    <ErrorMessage />
                 </div>
             </div>
         </div>

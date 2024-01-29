@@ -44,6 +44,32 @@
   box-shadow: none;
 }
 
+.inputplacepass2 {
+  width: calc(300px * 0.92);
+  height: calc(400px * 0.075);
+  background: none;
+  border: 1px solid #ffffff;
+  display: block;
+  margin: calc(400px * 0.05) auto;
+  outline: none;
+  font-size: 100%;
+  color: #ffffff;
+}
+
+.inputplacepass2:focus {
+  border-color: #09cae8;
+  box-shadow: 0.01px 0.01px 15px 0.01px #09cae8;
+}
+
+.inputplacepass2:invalid:focus {
+  border-color: red;
+  box-shadow: none;
+}
+
+.inputplacepass2:invalid::placeholder{
+  color: red;
+}
+
 .inputplace0 {
   width: calc(300px * 0.4312);
   height: calc(400px * 0.075);
@@ -64,6 +90,16 @@
 .inputplace0:invalid:focus {
   border-color: red;
   box-shadow: none;
+}
+
+.errors {
+  width: 360px;
+  position: relative;
+  background: #34495e;
+  color: red;
+  border-radius: 0.7em;
+  margin-top: 10px;
+  border: 1px solid red;
 }
 
 .button_autorisation {
@@ -96,11 +132,68 @@
   margin: auto calc(360px * 0.035);
 }
 
+.update {
+  margin-top: 180px;
+  color: #09cae8;
+}
+
+.margin01 {
+  margin-top: 1vh;
+}
+.margin02 {
+  margin-top: 2vh;
+}
+.margin03 {
+  margin-top: 3vh;
+}
+.margin05 {
+  margin-top: 5vh;
+}
+.margin3 {
+  margin-top: 30vh;
+}
+.margin15 {
+  margin-top: 15vh;
+}
+
+.margin2p {
+  margin-top: 20px;
+}
+.margin4p {
+  margin-top: 40px;
+}
+
+
 @media (min-height: 1px) {
   @media (max-height: 500px) {
   .enterbox {
       height: auto;
       margin-bottom: 10vh;
+  }
+  .update {
+    margin-top: 10px;
+  }
+}
+}
+
+@media (min-height: 1300px) {
+  @media (max-height: 1700px) {
+  .margin4p {
+    margin: 30px;
+  }
+  .margin05 {
+    margin: 3vh;
+  }
+}
+}
+
+@media (min-height: 1700px) {
+  @media (max-height: 2000px) {
+  .margin4p {
+    margin: 20px;
+  }
+  .margin05 {
+    margin: 2vh;
   }
 }
 }
@@ -110,6 +203,9 @@
     .enterbox {
         max-width: 350px;
         }
+    .errors {
+      max-width: 350px;
+      }
     .inputplace0 {
         margin: auto calc(350px * 0.022);
         }
@@ -124,6 +220,9 @@
     .enterbox {
         max-width: 335px;
         }
+    .errors {
+      max-width: 335px;
+      }
     .inputplace0 {
         margin: auto calc(335px * 0.022);
         }
