@@ -1,4 +1,4 @@
-async function submitHandler(event: React.FormEvent) {
+async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: number) => void) {
     event.preventDefault();
     const target = event.target as typeof event.target & {
         name: { value: string };
@@ -20,6 +20,8 @@ async function submitHandler(event: React.FormEvent) {
     console.log(phone);
     console.log(pass1);
     console.log(pass2);
+
+    setDisplayError(0);
 
     if(pass1 === pass2) {
         const response = await fetch('http://localhost:3000', {
@@ -45,7 +47,8 @@ async function submitHandler(event: React.FormEvent) {
         target.pass2.value = ""
         target.pass2.placeholder = "Passwords are not the same"
         target.pass2.className = "inputplacepass2"
+        setDisplayError(3);
     }
 }
 
-export default submitHandler
+export default SubmitHandler

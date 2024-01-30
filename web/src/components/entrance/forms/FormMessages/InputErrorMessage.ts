@@ -1,5 +1,5 @@
-function invalidInput(event: any) {
+function InvalidInput(event: any) {
     (event.target as HTMLInputElement).setCustomValidity(event.target.title)
 } 
 
-export default invalidInput
+export default InvalidInput

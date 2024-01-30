@@ -1,4 +1,4 @@
-async function submitHandler(event: React.FormEvent, setDisplayError: (value: number) => void) {
+async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: number) => void) {
     event.preventDefault();
     const target = event.target as typeof event.target & {
         pass1: { value: string };
@@ -34,4 +34,4 @@ async function submitHandler(event: React.FormEvent, setDisplayError: (value: nu
     }
 }
 
-export default submitHandler
+export default SubmitHandler

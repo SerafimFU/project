@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import Submit from '../Submit.tsx'
-import submitHandler from './forms/Change_password_form.ts'
-import invalidInput from './forms/Form_message.ts'
+import SubmitHandler from './forms/Change_password_form.ts'
+import InvalidInput from './forms/FormMessages/InputErrorMessage.ts'
 import './Enterance.css'
 
 type AuthProps = {
@@ -17,7 +17,7 @@ function Change_password(props: AuthProps) {
     const validInput=(event: React.FormEvent) => {(event.target as HTMLInputElement).setCustomValidity('')}
 
     const submitForm = (event: React.FormEvent) => {
-        submitHandler(event, props.setDisplayError)
+        SubmitHandler(event, props.setDisplayError)
     }
 
     function SuccessMessage() {
@@ -29,9 +29,9 @@ function Change_password(props: AuthProps) {
                     <div className="margin4p" />
                     <h1>Change password</h1>
                     <div className="margin4p" />
-                    <input className="inputplace" type="password" name="pass1" placeholder="Enter new password" required pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,45}" onInvalid={invalidInput} onInput={validInput} title="The password must contain one uppercase letter, one lowercase letter, a number, and one of these special characters! &quot; @ # $ % ^ & * &quot;. Minimum length - 8 symbols." />
+                    <input className="inputplace" type="password" name="pass1" placeholder="Enter new password" required pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,45}" onInvalid={InvalidInput} onInput={validInput} title="The password must contain one uppercase letter, one lowercase letter, a number, and one of these special characters! &quot; @ # $ % ^ & * &quot;. Minimum length - 8 symbols." />
                     <div className="margin4p" />
-                    <input className="inputplace" type="password" name="pass2" placeholder="Repeat password" required pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,45}" onInvalid={invalidInput} onInput={validInput} title="Please repeat the password" />
+                    <input className="inputplace" type="password" name="pass2" placeholder="Repeat password" required pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,45}" onInvalid={InvalidInput} onInput={validInput} title="Please repeat the password" />
                     <div className="margin4p" />
                     <Submit text="Change password" style="button_autorisation" />
                 </>

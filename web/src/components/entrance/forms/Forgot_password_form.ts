@@ -1,4 +1,4 @@
-async function submitHandler(event: React.FormEvent) {
+async function SubmitHandler(event: React.FormEvent) {
     event.preventDefault();
     const target = event.target as typeof event.target & {
         email: { value: string };
@@ -23,4 +23,4 @@ async function submitHandler(event: React.FormEvent) {
     }
 }
 
-export default submitHandler
+export default SubmitHandler

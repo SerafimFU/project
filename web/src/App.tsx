@@ -26,7 +26,7 @@ function App() {
       <Routes>
         <Route path="/" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Main />} />
         <Route path="/autorisation" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Autorisation handleLogin={handleLogin} setDisplayError={setDisplayError} displayError={displayError} />} />
-        <Route path="/registration" element={isLoggedIn ? <Navigate replace to="/profile" /> :<Registration />} />
+        <Route path="/registration" element={isLoggedIn ? <Navigate replace to="/profile" /> :<Registration setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/forgot_password" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Forgot_password />} />
         <Route path="/change_password" element={<Change_password setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/profile" element={isLoggedIn ? <Profile handleLogout={handleLogout} /> : <Navigate replace to="/autorisation" />} />
