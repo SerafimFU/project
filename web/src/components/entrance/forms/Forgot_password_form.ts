@@ -1,4 +1,4 @@
-async function SubmitHandler(event: React.FormEvent) {
+async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: number) => void) {
     event.preventDefault();
     const target = event.target as typeof event.target & {
         email: { value: string };
@@ -20,6 +20,7 @@ async function SubmitHandler(event: React.FormEvent) {
         console.log(await response.json())
     } else {
         console.log(response.status)
+        setDisplayError(4)
     }
 }
 

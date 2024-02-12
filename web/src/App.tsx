@@ -1,5 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useState } from "react"
+import { jwtDecode } from "jwt-decode"
 import Main from './components/main/Main.tsx'
 import Autorisation from './components/entrance/Autorisation.tsx'
 import Registration from './components/entrance/Registration.tsx'
@@ -8,26 +9,40 @@ import Forgot_password from './components/entrance/Forgot_password.tsx'
 import Profile from './components/profile/Profile.tsx'
 import './App.css'
 
+interface Token {
+  access_token: string
+}
+
+
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-  const handleLogin = () => {
-    setIsLoggedIn(true);
-  };
+    const handleLogin = () => {
+      setIsLoggedIn(true);
+    };
 
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-  };
+    const handleLogout = () => {
+      setIsLoggedIn(false);
+      token.access_token = null;
+      console.log(token)
+    };
 
   const [displayError, setDisplayError] = useState(0);
 
+  const [token, setToken] = useState<Token | any>();
+  
+  if (token && token.access_token != null) {
+    let a = jwtDecode(token.access_token);
+    console.log(a.exp);
+  }
+  
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Main />} />
-        <Route path="/autorisation" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Autorisation handleLogin={handleLogin} setDisplayError={setDisplayError} displayError={displayError} />} />
+        <Route path="/autorisation" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Autorisation handleLogin={handleLogin} setDisplayError={setDisplayError} displayError={displayError} setToken={setToken} />} />
         <Route path="/registration" element={isLoggedIn ? <Navigate replace to="/profile" /> :<Registration setDisplayError={setDisplayError} displayError={displayError} />} />
-        <Route path="/forgot_password" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Forgot_password />} />
+        <Route path="/forgot_password" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Forgot_password setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/change_password" element={<Change_password setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/profile" element={isLoggedIn ? <Profile handleLogout={handleLogout} /> : <Navigate replace to="/autorisation" />} />
       </Routes>

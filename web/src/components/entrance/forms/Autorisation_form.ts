@@ -1,4 +1,4 @@
-async function SubmitHandler(event: React.FormEvent, callback: () => any, setDisplayError: (value: number) => void) {
+async function SubmitHandler(event: React.FormEvent, handlyLogin: () => any, setDisplayError: (value: number) => void, setToken: any) {
         event.preventDefault();
         const target = event.target as typeof event.target & {
             login: { value: string };
@@ -8,8 +8,6 @@ async function SubmitHandler(event: React.FormEvent, callback: () => any, setDis
         const pass = target.pass.value;
         console.log(login);
         console.log(pass);
-
-        setDisplayError(0);
         
         const response = await fetch('http://localhost:3000/auth/login', {
         method: 'POST',
@@ -24,7 +22,8 @@ async function SubmitHandler(event: React.FormEvent, callback: () => any, setDis
     
         if(response.ok) {
             console.log(response),
-            callback()
+            handlyLogin()
+            setToken(await response.json())
         } else {
             console.log(response.status)
             if (response.status == 401) {
@@ -36,7 +35,7 @@ async function SubmitHandler(event: React.FormEvent, callback: () => any, setDis
                 setDisplayError(2);
             }
         }
-
+        
 }
 
 export default SubmitHandler

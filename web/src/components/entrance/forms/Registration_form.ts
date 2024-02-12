@@ -30,10 +30,10 @@ async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: nu
             "Content-Type": "application/json"
         },
         body: JSON.stringify({
-            name: name,
+            username: name,
             surname: surname,
             email: email,
-            phone_nomber: phone,
+            phone_number: phone,
             password: pass1,
         })
         });

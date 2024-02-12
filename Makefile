@@ -8,7 +8,7 @@ yarn:
 	docker run --rm --tty \
 	-v ./web:/dk \
 	-w /dk \
-	node:lts yarn
+	node:lts yarn 
 
 dev:
 	docker run --rm -ti \
@@ -21,7 +21,7 @@ installback:
 	docker run --rm --tty \
 	-v ./nest:/bg \
 	-w /bg \
-	node:lts npm install
+	node:lts npm install --save @nestjs/typeorm typeorm mysql2
 
 runback: 
 	docker run --rm --tty \

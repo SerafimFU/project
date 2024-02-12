@@ -12,6 +12,18 @@ function ErrorMessage(props: AuthProps) {
     if (props.displayError === 3) {
         return <div className="errors mx-auto">Passwords are not the same</div>
     }
+    if (props.displayError === 4) {
+        return <div className="errors mx-auto">User with this email doesn't exist </div>
+    }
+    if (props.displayError === 5) {
+        return <div className="errors mx-auto">Passwords are not the same</div>
+    }
+    if (props.displayError === 6) {
+        return <div className="errors mx-auto">Passwords are not the same</div>
+    }
+    if (props.displayError === 7) {
+        return <div className="errors mx-auto">Passwords are not the same</div>
+    }
 }
 
 export default ErrorMessage

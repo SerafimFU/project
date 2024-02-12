@@ -14,6 +14,7 @@ type AuthProps = {
 function Registration(props: AuthProps) {
     useEffect(() => {
         document.title = "Registration";
+        props.setDisplayError(0);
     }, []);
     
     const validInput=(event: React.FormEvent) => {(event.target as HTMLInputElement).setCustomValidity('')}
@@ -32,7 +33,7 @@ function Registration(props: AuthProps) {
                         <div className="margin02" />
                         <input className="inputplace0" type="text" name="name" placeholder="Name" required pattern="^[A-ZΑ-ΩА-Я][a-zA-Zα-ωΑ-Ωа-яА-ЯёЁ\-]{1,20}" onInvalid={InvalidInput} onInput={validInput} title="Please enter your Name with a capital letter" />
                         <input className="inputplace0" type="text" name="surname" placeholder="Surname" required pattern="^[A-ZΑ-ΩА-Я][a-zA-Zα-ωΑ-Ωа-яА-ЯёЁ\-]{1,20}" onInvalid={InvalidInput} onInput={validInput} title="Please enter your Surname with a capital letter" />
-                        <input className="inputplace" type="email" name="email" placeholder="Email" required minLength={7} maxLength={40} onInvalid={InvalidInput} onInput={validInput} title="Please enter your Email address" />
+                        <input className="inputplace" type="email" name="email" placeholder="Email" required minLength={7} maxLength={319} onInvalid={InvalidInput} onInput={validInput} title="Please enter your Email address" />
                         <input className="inputplace" type="text" name="phone" placeholder="Phone number" required pattern="[0-9\-\+\(\)]{7,22}" onInvalid={InvalidInput} onInput={validInput} title="Please enter your Phone number" />
                         <input className="inputplace" type="password" name="pass1" placeholder="Password" required pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,45}" onInvalid={InvalidInput} onInput={validInput} title="The password must contain one uppercase letter, one lowercase letter, a number, and one of these special characters! &quot; @ # $ % ^ & * &quot;. Minimum length - 8 symbols." />
                         <input className="inputplace" type="password" name="pass2" placeholder="Repeat password" required pattern="(?=.*[0-9])(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z!@#$%^&*]{8,45}" onInvalid={InvalidInput} onInput={validInput} title="Please repeat the password" />
