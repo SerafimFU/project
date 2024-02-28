@@ -1,3 +1,5 @@
+/* На данный момент бесполезный файл */
+
 export const TEST_REPOSITORY = {
   };
 

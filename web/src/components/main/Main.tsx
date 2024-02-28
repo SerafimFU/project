@@ -2,7 +2,11 @@ import { useEffect } from 'react';
 import Button from '../Button.tsx'
 import './Main.css'
 
+/* Компонент титульной страницы */
+
 function Main() {
+
+    /* Смена заголовка вкладки в браузере */
     useEffect(() => {
         document.title = "Entrance";
     }, []);

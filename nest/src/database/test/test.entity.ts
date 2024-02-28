@@ -1,5 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm'
 
+/* Структура таблицы USER в БД */
+
 @Entity()
 export class Users {
   @PrimaryGeneratedColumn()

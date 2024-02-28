@@ -1,14 +1,20 @@
-async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: number) => void) {
+/* Функция смены пароля */
+
+async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: string) => void) {
     event.preventDefault();
+
+    /* Прием значений полей формы */
     const target = event.target as typeof event.target & {
         pass1: { value: string };
         pass2: { value: string, placeholder: string, className: string };
     }
     const pass1 = target.pass1.value;
     const pass2 = target.pass2.value;
-    console.log(pass1);
-    console.log(pass2);
+    console.log(pass1); /* Trash */
+    console.log(pass2); /* Trash */
 
+    /* Отправка значений на сервер */
+    /* Здесь надо настроить сервер под это событие */
     if(pass1 === pass2) {
         const response = await fetch('http://localhost:3000', {
         method: 'POST',
@@ -19,15 +25,22 @@ async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: nu
             password: pass1,
         })
         });
-        
-        setDisplayError(1);
 
         if(response.ok) {
             console.log(await response.json())
+            setDisplayError('Password has been changed');
         } else {
-            console.log(response.status)
+            if ((response.status == 404) || (response.status == 500)) {
+                setDisplayError('1')
+            } else {
+                const serverResponse = await response.json()
+                setDisplayError(serverResponse.message);
+            }
+            /* Установка таймера */
+            setTimeout(() => setDisplayError(''), 3000)
         }
     }  else {
+        /* Ошибка идентичности паролей */
         target.pass2.value = ""
         target.pass2.placeholder = "Passwords are not the same"
         target.pass2.className = "inputplacepass2"

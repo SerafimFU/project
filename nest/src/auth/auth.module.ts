@@ -6,6 +6,9 @@ import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { TestModule } from '../database/test/test.module';
+import { CreateUserDto } from './auth.create-user.dto';
+
+/* Модули AUTH и установка времени действия токена */
 
 @Module({
   imports: [
@@ -16,7 +19,7 @@ import { TestModule } from '../database/test/test.module';
       signOptions: { expiresIn: '20s' },
     }),
   ],
-  providers: [AuthService, LocalStrategy, JwtStrategy],
-  exports: [AuthService],
+  providers: [AuthService, LocalStrategy, JwtStrategy, CreateUserDto],
+  exports: [AuthService, CreateUserDto],
 })
 export class AuthModule {}

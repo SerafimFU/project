@@ -2,26 +2,36 @@ import { useEffect } from 'react';
 import Submit from '../Submit.tsx'
 import SubmitHandler from './forms/Change_password_form.ts'
 import InvalidInput from './forms/FormMessages/InputErrorMessage.ts'
+import ErrorMessage from './forms/FormMessages/ErrorMessage.tsx';
 import './Enterance.css'
 
+/* Компонент страницы смены пароля */
+
+/* Props компонента */
 type AuthProps = {
-    setDisplayError (value: number) : void
-    displayError: number;
+    setDisplayError (value: string) : void
+    displayError: string;
 }
 
 function Change_password(props: AuthProps) {
+
+    /* Смена заголовка вкладки в браузере */
     useEffect(() => {
         document.title = "Change_password";
+        props.setDisplayError('');
     }, []);
     
+    /* Константа валидного ввода данных формы */
     const validInput=(event: React.FormEvent) => {(event.target as HTMLInputElement).setCustomValidity('')}
 
+    /* Обработка оправки формы */
     const submitForm = (event: React.FormEvent) => {
         SubmitHandler(event, props.setDisplayError)
     }
 
+    /* Форма смены пароля */
     function SuccessMessage() {
-        if (props.displayError === 1) {
+        if (props.displayError === 'Password has been changed') {
             return <div className="update mx-auto">Password has been changed<br/>You can close this page</div>
         } else {
             return (
@@ -39,6 +49,7 @@ function Change_password(props: AuthProps) {
         }
     }
 
+    /* Вывод страницы */
     return (
         <div className="container-fluid text-center">
             <div className="row">
@@ -46,6 +57,7 @@ function Change_password(props: AuthProps) {
                     <form className="enterbox mx-auto" id="change_password-form" onSubmit={submitForm}>
                        <SuccessMessage />
                     </form>
+                    <ErrorMessage displayError={props.displayError} />
                 </div>
             </div>
         </div>

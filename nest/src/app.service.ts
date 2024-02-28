@@ -1,4 +1,6 @@
-import { Injectable } from '@nestjs/common';
+/*import { Injectable } from '@nestjs/common';
+
+// Пустой сервис 
 
 @Injectable()
 export class AppService {
@@ -6,3 +8,4 @@ export class AppService {
     return 'Hello World!';
   }
 }
+*/

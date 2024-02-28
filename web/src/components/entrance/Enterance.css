@@ -1,3 +1,5 @@
+/* Стили страниц входа */
+
 .enterbox {
   width: 360px;
   height: 460px;
@@ -112,6 +114,10 @@
   outline: none;
   font-size: 105%;
   color: #ffffff;
+}
+
+.button_autorisation:active {
+  background: #00b4cf;
 }
 
 .link { 

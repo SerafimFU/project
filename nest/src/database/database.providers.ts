@@ -1,6 +1,8 @@
 import { DataSource } from 'typeorm'
 import { Users } from './test/test.entity'
 
+/* Установка соединения с базой данных */
+
 export const databaseProviders = [
   {
     provide: 'DATA_SOURCE',

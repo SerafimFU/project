@@ -3,24 +3,31 @@ import { NavLink } from 'react-router-dom'
 import Submit from '../Submit.tsx'
 import SubmitHandler from './forms/Autorisation_form.ts'
 import InvalidInput from './forms/FormMessages/InputErrorMessage.ts'
-import ErrorMessage from './forms/FormMessages/ErrorMessage.tsx';
+import ErrorMessage from './forms/FormMessages/ErrorMessage.tsx'
 import './Enterance.css'
 
+/* Компонент страницы авторизации */
+
+/* Props компонента */
 type AuthProps = {
     handleLogin: () => void
-    setDisplayError (value: number) : void
-    displayError: number;
+    setDisplayError (value: string) : void
+    displayError: string;
     setToken: any;
 }
 
 function Autorisation(props: AuthProps) {
+    
+    /* Состояния */
     useEffect(() => {
         document.title = "Autorisation";
-        props.setDisplayError(0);
+        props.setDisplayError('');
     }, []);
     
+    /* Константа валидного ввода данных формы */
     const validInput=(event: React.FormEvent) => {(event.target as HTMLInputElement).setCustomValidity('')}
 
+    /* Обработка события Logoin */
     const submitForm = (event: React.FormEvent) => {
         SubmitHandler(event, props.handleLogin, props.setDisplayError, props.setToken)
     }

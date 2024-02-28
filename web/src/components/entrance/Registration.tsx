@@ -6,19 +6,26 @@ import InvalidInput from './forms/FormMessages/InputErrorMessage.ts'
 import ErrorMessage from './forms/FormMessages/ErrorMessage.tsx';
 import './Enterance.css'
 
+/* Компонент запроса смены пароля */
+
+/* Props компонента */
 type AuthProps = {
-    setDisplayError (value: number) : void
-    displayError: number;
+    setDisplayError (value: string) : void
+    displayError: string;
 }
 
 function Registration(props: AuthProps) {
+
+    /* Состояния */
     useEffect(() => {
         document.title = "Registration";
-        props.setDisplayError(0);
+        props.setDisplayError('');
     }, []);
     
+    /* Константа валидного ввода данных формы */
     const validInput=(event: React.FormEvent) => {(event.target as HTMLInputElement).setCustomValidity('')}
 
+    /* Обработка оправки формы */
     const submitForm = (event: React.FormEvent) => {
         SubmitHandler(event, props.setDisplayError)
     }
