@@ -24,14 +24,14 @@ function Profile(props: AuthProps) {
 
     /* Тестовая страница */
     return (
-        <>
+        <div>
             <div>sdfdsfsdfdsfsdsfsdf</div>
             <NavLink to="/">main</NavLink><br/>
             <NavLink to="/autorisation">autorisation</NavLink><br/>
             <NavLink to="/registration">registration</NavLink><br/>
             <NavLink to="/forgot_password">forgot_password</NavLink><br/>
             <button onClick={LogoutButton}>Log out</button>
-        </>
+        </div>
     )
 }
 
