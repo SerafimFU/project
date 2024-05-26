@@ -17,6 +17,10 @@ async function LogOut(event: React.FormEvent, handlyLogout: () => any, token: st
             handlyLogout()
         } else {
             console.log(response.status) /* Trash */
+            if (response.status == 401) {
+                handlyLogout()
+                console.log('Token has expired') /* Trash */
+            }
         }
     /* Если токен не сохранен разлогиниваемся */
     } else {

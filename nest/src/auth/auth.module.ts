@@ -16,7 +16,7 @@ import { CreateUserDto } from './auth.create-user.dto';
     PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '20s' },
+      signOptions: { expiresIn: '2h' },
     }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, CreateUserDto],

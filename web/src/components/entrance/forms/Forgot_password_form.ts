@@ -26,9 +26,11 @@ async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: st
         console.log(await response.json())
     } else {
         if ((response.status == 404) || (response.status == 500)) {
-            setDisplayError('1')
+            setDisplayError('');
+            setDisplayError('1');
         } else {
             const serverResponse = await response.json()
+            setDisplayError('');
             setDisplayError(serverResponse.message);
         }
         /* Установка таймера */
