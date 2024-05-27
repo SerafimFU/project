@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useState } from "react"
-import { jwtDecode } from "jwt-decode"
+import { jwtDecode } from 'jwt-decode'
 import Main from './components/main/Main.tsx'
 import Autorisation from './components/entrance/Autorisation.tsx'
 import Registration from './components/entrance/Registration.tsx'

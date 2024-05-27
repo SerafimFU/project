@@ -1,0 +1,60 @@
+/* Стили страницы профиля */
+
+.mainspace {
+    background: linear-gradient(to bottom, #587794, #3f566c);
+    height: 100vh;
+}
+
+.top-line {
+    background: #254360;
+    height: calc(30px + 2vh);
+}
+
+.little-Uname {
+    font-size: calc(1rem + 1em + 0.5vw);
+    font-weight: 600;
+    color: transparent;
+    background-clip: text;
+    background-image: linear-gradient(to left, #09cae8, #627c96);
+    -webkit-background-clip: text;
+    text-align: left;
+    position: fixed;    
+}
+
+.top-line-username {
+    padding-top: calc((8px + 2vh) / 2);
+    float: right;
+}
+
+.main-circle {
+    height: calc(20px + 2vh);
+    width: calc(20px + 2vh);
+    background-color: #555;
+    border-radius: 50%;
+    float: right;
+    margin-left: calc(1vw + 2px);
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+@media (min-height: 1px) {
+    @media (max-height: 700px) {
+        .little-Uname {
+            font-size: calc(1em + 0.5vw);
+            font-weight: 600; 
+            padding-top: calc((10px + 2vh) / 2);
+        }
+    }
+}
+  
+@media (min-width: 1px) {
+    @media (max-width: 600px) {
+        .little-Uname {
+            font-size: calc(1em + 0.5vw);
+            font-weight: 600; 
+            padding-top: calc((10px + 2vh) / 2);
+        }
+    }
+}
