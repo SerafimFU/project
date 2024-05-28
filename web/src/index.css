@@ -26,7 +26,7 @@ textarea {
 @media (min-height: 1px) {
   @media (max-height: 500px) {
   body {
-    overflow-y: scroll;
+    overflow-y: auto;
   }
 }
 }

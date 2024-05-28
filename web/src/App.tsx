@@ -26,6 +26,9 @@ function App() {
   /* Константа состояния токена */
   const [token, setToken] = useState<Token | any>();
 
+  /* Константа состояния меню в профиле */
+  const [isOpen, setOpen] = useState(false);
+
   /* Функция Login */
   const handleLogin = () => {
     setIsLoggedIn(true);
@@ -44,6 +47,8 @@ function App() {
     console.log(a.exp); /* Trash */
     console.log(a); /* Trash */
   }
+
+  console.log(isOpen);
   
   /* Если пользователь не авторизован, редирект на страницу авторизации */
   return (
@@ -54,7 +59,7 @@ function App() {
         <Route path="/registration" element={isLoggedIn ? <Navigate replace to="/profile" /> :<Registration setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/forgot_password" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Forgot_password setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/change_password" element={<Change_password setDisplayError={setDisplayError} displayError={displayError} />} />
-        <Route path="/profile" element={isLoggedIn ? <Profile handleLogout={handleLogout} token={token.access_token} /> : <Navigate replace to="/autorisation" />} />
+        <Route path="/profile" element={isLoggedIn ? <Profile handleLogout={handleLogout} token={token.access_token} isOpen={isOpen} setOpen={setOpen} /> : <Navigate replace to="/autorisation" />} />
       </Routes>
     </BrowserRouter>
   )
