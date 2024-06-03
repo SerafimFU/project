@@ -1,9 +1,10 @@
-import { useEffect} from 'react'
+import { useEffect } from 'react'
 import { NavLink } from 'react-router-dom'
 import Top_line from './Top_line'
 import './Profile.css' 
+import MyCalendar from './MyCalendar'
 
-/* Компонент профиля */
+/* Компонент расписания */
 
 /* Props компонента */
 type AuthProps = {
@@ -13,11 +14,11 @@ type AuthProps = {
     setOpen: any
 }
 
-function Profile(props: AuthProps) {
+function Timetable(props: AuthProps) {
 
     /* Смена заголовка вкладки в браузере закритие всплывающего меню */
     useEffect(() => {
-        document.title = "Profile";
+        document.title = "Timetable";
     }, []);
 
     /* Тестовая страница */
@@ -28,16 +29,8 @@ function Profile(props: AuthProps) {
                 <div className="col-12 col-md-10 mainspace">
                     <Top_line handleLogout={props.handleLogout} token={props.token} isOpen={props.isOpen} setOpen={props.setOpen} />
                     <div className="margin_top_line" ></div>
-                    <NavLink to="/">main</NavLink><br/>
-                    <NavLink to="/autorisation">autorisation</NavLink><br/>
-                    <NavLink to="/registration">registration</NavLink><br/>
-                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
+                    <MyCalendar />
+                    <NavLink to="/forgot_password">aaaa</NavLink><br/>
                     <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                     <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                     <NavLink to="/forgot_password">forgot_password</NavLink><br/>
@@ -103,4 +96,4 @@ function Profile(props: AuthProps) {
     )
 }
 
-export default Profile
+export default Timetable

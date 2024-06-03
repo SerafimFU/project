@@ -8,7 +8,7 @@ yarn:
 	docker run --rm --tty \
 	-v ./web:/dk \
 	-w /dk \
-	node:lts yarn 
+	node:lts yarn add
 
 dev:
 	docker run --rm -ti \

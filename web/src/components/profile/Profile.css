@@ -1,36 +1,36 @@
 /* Стили страницы профиля */
 
 .mainspace {
-    background: linear-gradient(to bottom, #587794, #3f566c);
+    background: #587794;
     min-height: 100vh;
 }
 
-.top-line {
+.top_line {
     background: #254360;
     height: calc(30px + 2vh);
     width: calc(100% / 12 * 10);
     position: fixed;
 }
 
-.little-Uname {
+.little_Uname {
     font-size: calc(1rem + 1em + 0.5vw);
     font-weight: 600;
     color: transparent;
     background-clip: text;
-    background-image: linear-gradient(to left, #09cae8, #627c96);
+    background-image: linear-gradient(to left, #09cae8, #5b87b4);
     -webkit-background-clip: text;
     text-align: left;    
     line-height: calc(30px + 2vh);
 }
 
-.top-line-username {
+.top_line_username {
     font-size: calc(1rem + 0.5vw);
     font-weight: 600;
     line-height: calc(32px + 2vh);
     float: right;
 }
 
-.main-circle {
+.main_circle {
     height: calc(20px + 2vh);
     width: calc(20px + 2vh);
     background-color: #989898;
@@ -42,7 +42,7 @@
     margin-bottom: 5px;
 }
 
-.main-circle:active {
+.main_circle:active {
     background: #00b4cf;
 }
 
@@ -60,7 +60,7 @@
     transition: 0.5s;
 }
 
-.menu-active {
+.menu_active {
     position: absolute;
     width: 20vw;
     top: calc(100% + 1vh);
@@ -74,25 +74,31 @@
     transition: 0.5s;
 }
 
-.menu-list {
+.menu_list {
     text-align: left;
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-.menu-item {
-    margin-top: 1vh;
+.menu_item {
+    padding-top: 0.5vh;
+    padding-bottom: 0.5vh;
+    padding-left: 5px;
 }
 
-.margin-top-line {
+.menu_item:hover {
+    background-color: #989898;
+}
+
+.margin_top_line {
     margin-top: calc(30px + 2vh);
 }
 
 
 @media (min-height: 1px) {
     @media (max-height: 700px) {
-        .little-Uname {
+        .little_Uname {
             font-size: calc(1em + 0.5vw);
         }
     }
@@ -100,7 +106,7 @@
   
 @media (min-width: 1px) {
     @media (max-width: 600px) {
-        .little-Uname {
+        .little_Uname {
             font-size: calc(1em + 0.5vw);
         }
     }
@@ -109,7 +115,7 @@
 
 @media (min-width: 1px) {
     @media (max-width: 767px) {
-        .top-line {
+        .top_line {
             width: 100%;
         }
 
@@ -117,7 +123,7 @@
             width: 50vw;
         }
         
-        .menu-active {
+        .menu_active {
             width: 50vw;
         }
     }
