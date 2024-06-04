@@ -48,7 +48,7 @@ function Top_line(props: AuthProps) {
                         <NavLink to="/profile/timetable"><li className="menu_item">Timetable</li></NavLink>
                         <NavLink to="/profile"><li className="menu_item">Profile</li></NavLink>
                         <NavLink to="/"><li className="menu_item">main</li></NavLink>
-                            <li className="menu_item"><button onClick={LogoutButton}>Log out</button></li>
+                        <li><button className="logout_button" onClick={LogoutButton}>Log out</button></li>
                         </ul>
                     </nav>
                 </div>    
