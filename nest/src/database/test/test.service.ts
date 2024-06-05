@@ -1,5 +1,5 @@
 import { Injectable, Inject } from '@nestjs/common'
-import { Repository, DeepPartial } from 'typeorm'
+import { Repository, DeepPartial, Raw } from 'typeorm'
 import { Users } from './test.entity'
 
 /* Список запросов к БД */
@@ -56,4 +56,23 @@ export class TestService {
       isActive,
     });
   }
+
+  /* Время последней активности */
+  async activeTime(id: number, activeTime: Date) {
+    return await this.testRepository.update({
+      id,
+    }, {
+      activeTime,
+    });
+  }
+
+  /* Интервальная проверка со сменой состояния активности неактивных пользователей */
+  async checkActivity(dateParametr) {
+    await this.testRepository.update({
+     isActive: true,
+     activeTime: Raw((alias) => `${alias} < :date`, { date: dateParametr }),
+   }, {
+     isActive: false,
+   });
+ }
 }

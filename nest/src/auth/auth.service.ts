@@ -1,6 +1,7 @@
-import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { TestService } from '../database/test/test.service'
+import { Cron } from '@nestjs/schedule';
 
 @Injectable()
 export class AuthService {
@@ -9,6 +10,8 @@ export class AuthService {
     private testService: TestService,
   ) {}
   
+  private readonly logger = new Logger(AuthService.name);
+
   /* Функция авторизации пользователя */
   async validateUser(username: string, pass: string): Promise<any> {
     const user = await this.testService.findEmail(username);
@@ -57,4 +60,18 @@ export class AuthService {
     }
   }
 
+  /* Функция записи времени последней активности */
+  async activeTime(user: any) {
+    this.testService.activeTime(user.id, new Date(Date.now()))
+    return {};
+  }
+
+  /* Функция интервальной проверки активности пользователя */
+  @Cron('0 * * * * *')
+  async handleCron() {
+    var dateParametr = new Date();
+    dateParametr.setSeconds(dateParametr.getSeconds() - 60);
+    //dateParametr.setDate(dateParametr.getDate() - 1);
+    await this.testService.checkActivity(dateParametr);
+  }
 } 
