@@ -82,18 +82,28 @@
 }
 
 .menu_item {
+    padding-left: calc(0.5vw + 5px);
+    text-align: left;
     padding-top: 0.5vh;
     padding-bottom: 0.5vh;
-    padding-left: calc(0.5vw + 5px);
+    width: 100%;
 }
 
 .menu_item:hover {
     background-color: #c0c0c0;
 }
 
+.link_button {
+    padding: 0;
+    width: 100%;
+    background-color: white;
+    border: none;
+}
+
 .logout_button {
     width: 100%;
     background-color: #587794;
+    border-color: black;
 }
 
 .logout_button:hover {
@@ -109,16 +119,16 @@
     display: flex;
 }
 
-.a {
+.calendar_table {
     width: 350px;
 }
 
-.b {
+.schedule_table {
     padding-top: calc(2vh + 5px);
     width: calc(100% - 350px);
 }
 
-.c {
+.calendar_table2 {
     position: fixed;
     padding-top: calc(2vh + 5px);
 }
@@ -145,21 +155,20 @@
             display: grid;
         }
         
-        .a {
+        .calendar_table {
             width: 100%;
         }
         
-        .b {
+        .schedule_table {
             width: 100%;
         }
         
-        .c {
+        .calendar_table2 {
             display: flex;
             position: static;
         }
 
-        .d {
-            position: relative;
+        .ads {
             width: calc(100% - 350px);
         }
     }
@@ -171,15 +180,15 @@
             display: grid;
         }
         
-        .a {
+        .calendar_table {
             width: 100%;
         }
         
-        .b {
+        .schedule_table {
             width: 100%;
         }
         
-        .c {
+        .calendar_table2 {
             position: static;
             text-align: center;
         }
@@ -188,9 +197,8 @@
             display: inline-block;
         }
 
-        .d {
+        .ads {
             display: inline-block;
-            position: relative;
         }
     }
 }

@@ -1,24 +1,24 @@
 import { Injectable, Inject } from '@nestjs/common'
 import { Repository, DeepPartial, Raw } from 'typeorm'
-import { Users } from './test.entity'
+import { Users } from './users.entity'
 
 /* Список запросов к БД */
 
 @Injectable()
-export class TestService {
+export class UsersService {
   constructor(
-    @Inject('TEST_REPOSITORY')
-    private testRepository: Repository<Users>,
+    @Inject('USERS_REPOSITORY')
+    private usersRepository: Repository<Users>,
   ) {}
   
   /* Find all */
   async findAll(): Promise<Users[]> {
-    return this.testRepository.find();
+    return this.usersRepository.find();
   }
 
   /* Find one по ID */
   findOne(id: number): Promise<Users> {
-    return this.testRepository.findOne({
+    return this.usersRepository.findOne({
       where: {
         id,
       },
@@ -27,7 +27,7 @@ export class TestService {
 
   /* Find one по Email */
   findEmail(email: string): Promise<Users> {
-    return this.testRepository.findOne({
+    return this.usersRepository.findOne({
       where: {
         email,
       },
@@ -36,7 +36,7 @@ export class TestService {
 
   /* Find one по Phone */
   findPhone(phone_number: string): Promise<Users> {
-    return this.testRepository.findOne({
+    return this.usersRepository.findOne({
       where: {
         phone_number,
       },
@@ -45,12 +45,12 @@ export class TestService {
 
   /* Create новой строки */
   async createUser(data: DeepPartial<Users> ) {
-    return await this.testRepository.save(data);
+    return await this.usersRepository.save(data);
   }
   
   /* Смена состояния активности */
   async isActive(id: number, isActive: boolean) {
-    return await this.testRepository.update({
+    return await this.usersRepository.update({
       id,
     }, {
       isActive,
@@ -59,7 +59,7 @@ export class TestService {
 
   /* Время последней активности */
   async activeTime(id: number, activeTime: Date) {
-    return await this.testRepository.update({
+    return await this.usersRepository.update({
       id,
     }, {
       activeTime,
@@ -68,11 +68,11 @@ export class TestService {
 
   /* Интервальная проверка со сменой состояния активности неактивных пользователей */
   async checkActivity(dateParametr) {
-    await this.testRepository.update({
-     isActive: true,
-     activeTime: Raw((alias) => `${alias} < :date`, { date: dateParametr }),
-   }, {
-     isActive: false,
-   });
- }
+    await this.usersRepository.update({
+      isActive: true,
+      activeTime: Raw((alias) => `${alias} < :date`, { date: dateParametr }),
+    }, {
+      isActive: false,
+    });
+  }
 }

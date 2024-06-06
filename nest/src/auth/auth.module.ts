@@ -5,18 +5,18 @@ import { JwtStrategy } from './jwt.strategy';
 import { PassportModule } from '@nestjs/passport';
 import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
-import { TestModule } from '../database/test/test.module';
+import { UsersModule } from '../database/users/users.module';
 import { CreateUserDto } from './auth.create-user.dto';
 
 /* Модули AUTH и установка времени действия токена */
 
 @Module({
   imports: [
-    TestModule,
+    UsersModule,
     PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,
-      signOptions: { expiresIn: '1m' },
+      signOptions: { expiresIn: '15m' },
     }),
   ],
   providers: [AuthService, LocalStrategy, JwtStrategy, CreateUserDto],

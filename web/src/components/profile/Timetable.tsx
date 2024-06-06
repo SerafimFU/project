@@ -30,17 +30,17 @@ function Timetable(props: AuthProps) {
                     <Top_line handleLogout={props.handleLogout} token={props.token} isOpen={props.isOpen} setOpen={props.setOpen} />
                     <div className="margin_top_line" ></div>
                     <div className="flex-container">
-                        <div className="a">
-                            <div className="c">
+                        <div className="calendar_table">
+                            <div className="calendar_table2">
                                 <MyCalendar />
-                                <div className="d">
+                                <div className="ads">
                                     <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                                     <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                                     <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                                 </div>
                             </div>
                         </div>
-                        <div className="b">
+                        <div className="schedule_table">
                             <NavLink to="/forgot_password">aaaa</NavLink><br/>
                             <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                             <NavLink to="/forgot_password">forgot_password</NavLink><br/>

@@ -1,3 +1,4 @@
+/*
 import { Body, Controller, Get, Post, Redirect } from '@nestjs/common'
 import { CreatePostsDto } from './create-posts.dto';
 
@@ -15,7 +16,7 @@ export class PostsController {
             return 
         }
 }
-
+*/
 
 
     

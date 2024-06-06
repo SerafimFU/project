@@ -25,6 +25,6 @@ export class Users {
   @Column({ default: false })
   isActive: boolean;
 
-  @Column({ type: "datetime", default: null })
+  @Column({ type: "timestamp", default: null })
   activeTime: Date;
 }

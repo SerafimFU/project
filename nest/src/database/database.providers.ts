@@ -1,5 +1,6 @@
 import { DataSource } from 'typeorm'
-import { Users } from './test/test.entity'
+import { Users } from './users/users.entity'
+import { Schedule } from './schedule/schedule.entity';
 
 /* Установка соединения с базой данных */
 
@@ -14,7 +15,7 @@ export const databaseProviders = [
         username: 'test-nest',
         password: 'secret',
         database: 'test-nest',
-        entities: [Users],
+        entities: [Users, Schedule],
         synchronize: true,
       });
 

@@ -1,11 +1,11 @@
 import { DataSource } from 'typeorm'
-import { Users } from './test.entity'
+import { Users } from './users.entity'
 
-/* Подклячение Data_Source */
+/* Подключение Data_Source */
 
-export const testProviders = [
+export const usersProviders = [
   {
-    provide: 'TEST_REPOSITORY',
+    provide: 'USERS_REPOSITORY',
     useFactory: (dataSource: DataSource) => dataSource.getRepository(Users),
     inject: ['DATA_SOURCE'],
   },

@@ -29,6 +29,10 @@ export class AppController {
     await this.authService.signup(createUserDto);
   }
 
+  /* Обработка GET запроса на переход к TimeTable */
+  @UseGuards(JwtAuthGuard)
+  @Get('auth/profile/timetable')
+
   /* Пустой профиль */
   @UseGuards(JwtAuthGuard)
   @Get('profile')
