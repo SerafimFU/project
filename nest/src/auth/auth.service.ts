@@ -1,6 +1,7 @@
 import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../database/users/users.service'
+import { ScheduleService } from 'src/database/schedule/schedule.service';
 import { Cron } from '@nestjs/schedule';
 
 @Injectable()
@@ -8,6 +9,7 @@ export class AuthService {
   constructor(
     private jwtService: JwtService,
     private usersService: UsersService,
+    private scheduleService: ScheduleService,
   ) {}
   
   private readonly logger = new Logger(AuthService.name);
@@ -47,6 +49,15 @@ export class AuthService {
   async logout(user: any) {
     this.usersService.isActive(user.id, false);
     return {};
+  }
+
+  /* Функция получения данных Timetable */
+  async timetable(user: any) {
+    const object = await this.usersService.findOne(user.id);
+    const data = await this.scheduleService.findLessons(object.group_id);
+    return {
+      data,
+    };
   }
 
   /* Функция регистрации пользователя */

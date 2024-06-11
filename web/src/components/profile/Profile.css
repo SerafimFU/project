@@ -133,6 +133,17 @@
     padding-top: calc(2vh + 5px);
 }
 
+.lessonplace {
+    width: 100%;
+}
+
+.lesson {
+    background-color: white;
+    margin-left: calc(1vw + 10px);
+    margin-right: calc(1vw + 10px);
+    margin-bottom: calc(2vh + 10px);
+}
+
 @media (min-height: 1px) {
     @media (max-height: 700px) {
         .little_Uname {
@@ -168,8 +179,13 @@
             position: static;
         }
 
-        .ads {
+        .announcement {
             width: calc(100% - 350px);
+        }
+
+        .lesson {
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 }
@@ -197,8 +213,13 @@
             display: inline-block;
         }
 
-        .ads {
+        .announcement {
             display: inline-block;
+        }
+
+        .lesson {
+            margin-left: 0;
+            margin-right: 0;
         }
     }
 }

@@ -13,6 +13,9 @@ export class Users {
   @Column({ type: "varchar", length: 21 })
   surname: string;
 
+  @Column({ type: "smallint" })
+  group_id: number;
+
   @Column({ type: "varchar", length: 319 })
   email: string;
 

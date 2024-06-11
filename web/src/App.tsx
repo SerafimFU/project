@@ -12,9 +12,12 @@ import './App.css'
 
 /* App компонент отвечающий за сборку приложения */
 
-/* Props компонента */
+/* Определение области значений */
 interface Token {
   access_token: string
+}
+
+interface ServerData {
 }
 
 function App() {
@@ -26,6 +29,9 @@ function App() {
 
   /* Константа состояния токена */
   const [token, setToken] = useState<Token | any>();
+
+  /* Константа состояния данных полученных с сервера */
+  const [serverData, setServerData] = useState<ServerData | any>();
 
   /* Константа состояния меню в профиле */
   const [isOpen, setOpen] = useState(false);
@@ -50,6 +56,7 @@ function App() {
     console.log(a); /* Trash */
   }
 
+
   console.log('login ' + isLoggedIn);
   
   /* Если пользователь не авторизован, редирект на страницу авторизации */
@@ -61,8 +68,8 @@ function App() {
         <Route path="/registration" element={isLoggedIn ? <Navigate replace to="/profile" /> :<Registration setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/forgot_password" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Forgot_password setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/change_password" element={<Change_password setDisplayError={setDisplayError} displayError={displayError} />} />
-        <Route path="/profile" element={isLoggedIn ? <Profile handleLogout={handleLogout} token={token.access_token} isOpen={isOpen} setOpen={setOpen} /> : <Navigate replace to="/autorisation" />} />
-        <Route path="/profile/timetable" element={isLoggedIn ? <Timetable handleLogout={handleLogout} token={token.access_token} isOpen={isOpen} setOpen={setOpen} /> : <Navigate replace to="/autorisation" />} />
+        <Route path="/profile" element={isLoggedIn ? <Profile handleLogout={handleLogout} token={token.access_token} isOpen={isOpen} setOpen={setOpen} serverData={serverData} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
+        <Route path="/profile/timetable" element={isLoggedIn ? <Timetable handleLogout={handleLogout} token={token.access_token} isOpen={isOpen} setOpen={setOpen} serverData={serverData} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
       </Routes>
     </BrowserRouter>
   )

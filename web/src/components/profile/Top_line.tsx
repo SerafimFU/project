@@ -2,8 +2,8 @@ import { useRef } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import { useClickOutside } from '../hooks/useClickOutside'
-import LogOut from './Logout'
-import ChangePlace from './ChangePlace'
+import LogOut from './Main_logic/Logout'
+import ChangePlace from './Main_logic/ChangePlace'
 import './Profile.css'
 
 /* Компонент заглавной линии сайта */
@@ -14,6 +14,7 @@ type AuthProps = {
     token: string
     isOpen: boolean
     setOpen: any
+    setServerData: any
 }
 
 function Top_line(props: AuthProps) {
@@ -22,8 +23,8 @@ function Top_line(props: AuthProps) {
     const navigate = useNavigate();
 
     /* Декодирование полученных из токена данных */
-    interface JwtPayload {name: string; surname: string}
-    let pdata = jwtDecode(props.token) as JwtPayload;;
+    interface JwtPayload {name: string; surname: string};
+    let pdata = jwtDecode(props.token) as JwtPayload;
 
     /* Обработка события Logout */
     const LogoutButton = (event: React.FormEvent) => {
@@ -32,7 +33,7 @@ function Top_line(props: AuthProps) {
 
     /* Обработка события ChangePlace */
     const ChangePlaceLink = (event: React.FormEvent) => {
-        ChangePlace(event, props.handleLogout, props.token, navigate)
+        ChangePlace(event, props.handleLogout, props.token, navigate, props.setServerData)
     }
 
     /* Обработка события открытия всплывающего меню */

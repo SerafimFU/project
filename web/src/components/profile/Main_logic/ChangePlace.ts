@@ -1,6 +1,6 @@
 /* Функция перехода между страницами авторизованного пользователя */
 
-async function ChangePlace(event: React.FormEvent, handlyLogout: () => any, token: string, navigate: (value: any) => any) {
+async function ChangePlace(event: React.FormEvent, handlyLogout: () => any, token: string, navigate: (value: any) => any, setServerData: any) {
     event.preventDefault();
 
     /* Прием пути, который передается как ID текущего объекта */
@@ -21,8 +21,10 @@ async function ChangePlace(event: React.FormEvent, handlyLogout: () => any, toke
 
         /* Здесь надо добавить обработку ошибок */
         if(response.ok) {
-            console.log(response); /* Trash */
-            navigate(target.id);
+            console.log(response) /* Trash */
+            const a = (await response.json()) 
+            setServerData(a.data)
+            navigate(target.id)
         } else {
             console.log(response.status) /* Trash */
             if (response.status == 401) {

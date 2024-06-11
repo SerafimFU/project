@@ -32,6 +32,9 @@ export class AppController {
   /* Обработка GET запроса на переход к TimeTable */
   @UseGuards(JwtAuthGuard)
   @Get('auth/profile/timetable')
+  async timetable(@Request() req) {
+    return this.authService.timetable(req.user);
+  }
 
   /* Пустой профиль */
   @UseGuards(JwtAuthGuard)
