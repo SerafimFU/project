@@ -7,3 +7,7 @@ export class CreateUserDto {
     readonly phone_number: string;
     readonly password: string;
   }
+
+export class ChangeDateDto {
+    readonly data: any;
+  }

@@ -137,11 +137,57 @@
     width: 100%;
 }
 
-.lesson {
-    background-color: white;
+.lesson1 {
+    background-color: #09cae8;
     margin-left: calc(1vw + 10px);
     margin-right: calc(1vw + 10px);
     margin-bottom: calc(2vh + 10px);
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 1vh;
+    border: 10px solid #254360;
+}
+
+.lesson2 {
+    background-color: #3ae88b;
+    margin-left: calc(1vw + 10px);
+    margin-right: calc(1vw + 10px);
+    margin-bottom: calc(2vh + 10px);
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 1vh;
+    border: 10px solid #254360;
+}
+
+.lesson3 {
+    background-color: #006edc;
+    margin-left: calc(1vw + 10px);
+    margin-right: calc(1vw + 10px);
+    margin-bottom: calc(2vh + 10px);
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-bottom: 1vh;
+    border: 10px solid #254360;
+}
+
+.subject {
+    font-size: calc(1rem + 0.3vw);
+    font-weight: 700;
+    text-align: center;    
+}
+
+.lessonTime {
+    font-size: calc(0.8rem + 0.3vw);
+    font-weight: 550;
+    text-align: center;
+    padding-bottom: 0.5vh;
+}
+
+.lessonTheme {
+    font-size: calc(0.7rem + 0.3vw);
+    font-weight: 550;
+    text-align: justify;
+    text-align-last: center;
 }
 
 @media (min-height: 1px) {
@@ -183,7 +229,7 @@
             width: calc(100% - 350px);
         }
 
-        .lesson {
+        .lesson1, .lesson2, .lesson3 {
             margin-left: 0;
             margin-right: 0;
         }
@@ -217,7 +263,7 @@
             display: inline-block;
         }
 
-        .lesson {
+        .lesson1, .lesson2, .lesson3 {
             margin-left: 0;
             margin-right: 0;
         }

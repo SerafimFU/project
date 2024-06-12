@@ -54,11 +54,27 @@ export class AuthService {
   /* Функция получения данных Timetable */
   async timetable(user: any) {
     const object = await this.usersService.findOne(user.id);
-    const data = await this.scheduleService.findLessons(object.group_id);
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${year}-${month}-${day}`;
+
+    const data = await this.scheduleService.findLessonsToday(object.group_id, currentDate);
     return {
       data,
     };
   }
+
+    /* Функция перехода по датам в Timetable */
+    async dateChange(user: any, changeDateDto) {
+      const object = await this.usersService.findOne(user.id);
+      const data = await this.scheduleService.findLessonsToday(object.group_id, changeDateDto.data);
+      return {
+        data,
+      };
+    }
 
   /* Функция регистрации пользователя */
   async signup(createUserDto) {

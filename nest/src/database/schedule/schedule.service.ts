@@ -26,10 +26,11 @@ export class ScheduleService {
   }
 
   /* Выборка расписания группы */
-  async findLessons(group_id: number): Promise<Schedule[]> {
+  async findLessonsToday(group_id: number, date: any): Promise<Schedule[]> {
     return this.scheduleRepository.find({
       where: {
         group_id,
+        date,
       },
     });
   }

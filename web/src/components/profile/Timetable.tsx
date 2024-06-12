@@ -36,7 +36,7 @@ function Timetable(props: AuthProps) {
                     <div className="flex-container">
                         <div className="calendar_table">
                             <div className="calendar_table2">
-                                <MyCalendar />
+                                <MyCalendar handleLogout={props.handleLogout} token={props.token} setServerData={props.setServerData} />
                                 <div className="announcement">
                                     <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                                     <NavLink to="/forgot_password">forgot_password</NavLink><br/>

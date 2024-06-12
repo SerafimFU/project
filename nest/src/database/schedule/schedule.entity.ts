@@ -19,12 +19,15 @@ export class Schedule {
   @Column({ type: "varchar", length: 40 })
   subject: string;
 
+  @Column({ type: "tinyint"})
+  type: number;
+
   @Column({ type: "varchar", length: 20 })
   place: string;
 
   @Column({ type: "varchar", length: 20, default: null })
   teacher: string;
 
-  @Column({ type: "varchar", length: 100, default: null })
+  @Column({ type: "varchar", length: 250, default: null })
   theme: string;
 }
