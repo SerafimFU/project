@@ -2,6 +2,7 @@
 .react-calendar {
     min-width: 280px;
     border: none;
+    margin-bottom: 1vh;
 }
 
 .react-calendar__navigation {

@@ -13,7 +13,7 @@ function Schedule(serverData: any) {
     for (let count = 0; count < length; count++) {
         li.push(
             <div key={count} className="lessonplace">
-                <div className={((serverData.serverData[count].type == 1) ? "lesson1" : ((serverData.serverData[count].type == 2) ? "lesson2" : "lesson3"))}>
+                <div className={((serverData.serverData[count].type == 1) ? "lesson1" : ((serverData.serverData[count].type == 2) ? "lesson2" : ((serverData.serverData[count].type == 3) ? "lesson3" : "lesson4")))}>
                     <div className="subject">{serverData.serverData[count].subject}</div>
                     <div className="lessonTime">{serverData.serverData[count].lessonTime.slice(0, -3)}</div>
                     <div className="lessonTime">{serverData.serverData[count].teacher}</div>

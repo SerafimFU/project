@@ -37,10 +37,15 @@ function Timetable(props: AuthProps) {
                         <div className="calendar_table">
                             <div className="calendar_table2">
                                 <MyCalendar handleLogout={props.handleLogout} token={props.token} setServerData={props.setServerData} />
-                                <div className="announcement">
-                                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                                    <NavLink to="/forgot_password">forgot_password</NavLink><br/>
+                                <div className="row announcement">
+                                    <div className="col-4"></div>
+                                    <div className="col-8">
+                                        <div className="col-6 lesson_icone_place" id="type_block"><div className="lesson_icone_1" />Lecture</div>
+                                        <div className="col-6 lesson_icone_place" id="type_block"><div className="lesson_icone_2" />Laboratory work</div>
+                                        <div className="col-6 lesson_icone_place" id="type_block"><div className="lesson_icone_3" />Seminar</div>
+                                        <div className="col-6 lesson_icone_place" id="type_block"><div className="lesson_icone_4" />Practical lesson</div>
+                                    </div>
+                                    <div className=""></div>
                                 </div>
                             </div>
                         </div>
