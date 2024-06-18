@@ -2,26 +2,25 @@
 
 function Schedule(serverData: any) {
 
-    const length = serverData.serverData.length;
-    console.log(length)
-    console.log(serverData.serverData)
-    console.log(serverData.serverData.length)
-    console.log(serverData.serverData[0])
-    
+    /* Объявление переменных */
+    const data = serverData.serverData;
+    const length = data.length;
+    console.log(data)  
+
     let li = [];
 
     for (let count = 0; count < length; count++) {
         li.push(
             <div key={count} className="lessonplace">
-                <div className={((serverData.serverData[count].type == 1) ? "lesson1" : ((serverData.serverData[count].type == 2) ? "lesson2" : ((serverData.serverData[count].type == 3) ? "lesson3" : "lesson4")))}>
-                    <div className="subject">{serverData.serverData[count].subject}</div>
-                    <div className="lessonTime">{serverData.serverData[count].lessonTime.slice(0, -3)}</div>
-                    <div className="lessonTime">{serverData.serverData[count].teacher}</div>
+                <div className={((data[count].type == 1) ? "lesson1" : ((data[count].type == 2) ? "lesson2" : ((data[count].type == 3) ? "lesson3" : "lesson4")))}>
+                    <div className="subject">{data[count].subject}</div>
+                    <div className="lessonTime">{data[count].lessonTime.slice(0, -3)}</div>
+                    <div className="lessonTime">{data[count].teacher}</div>
                     <div className="row lessonTime">
-                        <div className="col-6">{'Сlassroom: ' + serverData.serverData[count].place}</div>
-                        <div className="col-6">{'Group: ' + serverData.serverData[count].group_id}</div>
+                        <div className="col-6">{'Сlassroom: ' + data[count].place}</div>
+                        <div className="col-6">{'Group: ' + data[count].group_id}</div>
                     </div>
-                    <div className="lessonTheme">{serverData.serverData[count].theme}</div>
+                    <div className="lessonTheme">{data[count].theme}</div>
                 </div>
             </div>
         );

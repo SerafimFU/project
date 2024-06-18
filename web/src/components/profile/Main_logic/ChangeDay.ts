@@ -25,7 +25,7 @@ async function ChangeDay(day: any, handlyLogout: () => any, token: string, setSe
         /* Здесь надо добавить обработку ошибок */
         if(response.ok) {
             console.log(response) /* Trash */
-            const a = (await response.json()) 
+            const a = (await response.json())
             setServerData(a.data)
         } else {
             console.log(response.status) /* Trash */

@@ -62,19 +62,41 @@ export class AuthService {
     let currentDate = `${year}-${month}-${day}`;
 
     const data = await this.scheduleService.findLessonsToday(object.group_id, currentDate);
+    for (let i = 0; i < data.length - 1; i += 1) {
+      let indexMin = i;
+      for (let j = i + 1; j < data.length; j += 1) {
+        if (data[j].lessonTime < data[indexMin].lessonTime) {
+          indexMin = j;
+        }
+      }
+      const temporary = data[i];
+      data[i] = data[indexMin];
+      data[indexMin] = temporary;
+    }
     return {
       data,
     };
   }
 
-    /* Функция перехода по датам в Timetable */
-    async dateChange(user: any, changeDateDto) {
-      const object = await this.usersService.findOne(user.id);
-      const data = await this.scheduleService.findLessonsToday(object.group_id, changeDateDto.data);
-      return {
-        data,
-      };
-    }
+  /* Функция перехода по датам в Timetable + выборка дат в порядке возрастания */
+  async dateChange(user: any, changeDateDto) {
+    const object = await this.usersService.findOne(user.id);
+    const data = await this.scheduleService.findLessonsToday(object.group_id, changeDateDto.data);
+      for (let i = 0; i < data.length - 1; i += 1) {
+        let indexMin = i;
+        for (let j = i + 1; j < data.length; j += 1) {
+          if (data[j].lessonTime < data[indexMin].lessonTime) {
+            indexMin = j;
+          }
+        }
+        const temporary = data[i];
+        data[i] = data[indexMin];
+        data[indexMin] = temporary;
+      }
+    return {
+      data,
+    };
+  }
 
   /* Функция регистрации пользователя */
   async signup(createUserDto) {
