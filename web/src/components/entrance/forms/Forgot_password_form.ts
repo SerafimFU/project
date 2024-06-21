@@ -1,7 +1,14 @@
 /* Функция оправки запроса смены пароля */
 
+/* Объявление массива для таймера */
+let timer: Array<number> = [];
+
 async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: string) => void) {
     event.preventDefault();
+
+    /* Остановка таймера */
+    timer.forEach((value) => clearTimeout(value))
+    timer.length = 0;
 
     /* Прием значений полей формы */
     const target = event.target as typeof event.target & {
@@ -33,9 +40,10 @@ async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: st
             setDisplayError('');
             setDisplayError(serverResponse.message);
         }
-        /* Установка таймера */
-        setTimeout(() => setDisplayError(''), 3000)
     }
+    /* Установка таймера */
+    const timerID = setTimeout(() => setDisplayError(''), 3000) 
+    timer.push(timerID);
 }
 
 export default SubmitHandler

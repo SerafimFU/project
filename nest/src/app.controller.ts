@@ -16,6 +16,15 @@ export class AppController {
     return this.authService.login(req.user);
   }
 
+  /* Обработка POST запроса на изменение данных пользователя */
+  @UseGuards(JwtAuthGuard)
+  @Post('auth/edit_profile')
+  async edit_profile(@Request() req, @Body() createUserDto : CreateUserDto) {
+    const user = req.user;
+    this.authService.activeTime(user);
+    return await this.authService.edit_profile(user, createUserDto);
+  }
+
   /* Обработка GET запроса на Logout */
   @UseGuards(JwtAuthGuard)
   @Get('auth/logout')
@@ -28,20 +37,6 @@ export class AppController {
   async signup(@Body() createUserDto: CreateUserDto) {
     await this.authService.signup(createUserDto);
   }
-  
-  /* Обработка GET запроса на переход к Profile */
-  @UseGuards(JwtAuthGuard)
-  @Get('auth/profile')
-  getProfile(@Request() req) {
-    return req.user;
-  }
-
-  /* Обработка GET запроса на переход к TimeTable */
-  @UseGuards(JwtAuthGuard)
-  @Get('auth/profile/timetable')
-  async timetable(@Request() req) {
-    return this.authService.timetable(req.user);
-  }
 
   /* Обработка POST запроса на переход внутри TimeTable */
   @UseGuards(JwtAuthGuard)
@@ -50,4 +45,38 @@ export class AppController {
     const user = req.user
     return this.authService.dateChange(user, changeDateDto);
   }
+
+  /* GET запросы на переход */
+
+    /* Обработка GET запроса на переход к Profile */
+    @UseGuards(JwtAuthGuard)
+    @Get('auth/profile')
+    getProfile(@Request() req) {
+      this.authService.activeTime(req.user);
+      return req.user;
+    }
+  
+    /* Обработка GET запроса на переход к EditProfile */
+    @UseGuards(JwtAuthGuard)
+    @Get('auth/edit_profile')
+    getEditProfile(@Request() req) {
+      this.authService.activeTime(req.user);
+      return req.user;
+    }
+  
+    /* Обработка GET запроса на переход к EditPassword */
+    @UseGuards(JwtAuthGuard)
+    @Get('auth/edit_password')
+    getEditPassword(@Request() req) {
+      this.authService.activeTime(req.user);
+      return req.user;
+    }
+  
+    /* Обработка GET запроса на переход к TimeTable */
+    @UseGuards(JwtAuthGuard)
+    @Get('auth/profile/timetable')
+    async timetable(@Request() req) {
+      this.authService.activeTime(req.user);
+      return this.authService.timetable(req.user);
+    }
 }

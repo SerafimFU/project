@@ -1,8 +1,10 @@
 import { useEffect} from 'react'
-import { NavLink } from 'react-router-dom'
-import Top_line from './Top_line'
-import './Profile.css' 
+import { NavLink, useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
+import Top_line from './Top_line'
+import ChangePlace from './Main_logic/ChangePlace'
+import './Profile.css' 
+
 
 /* Компонент профиля */
 
@@ -23,8 +25,16 @@ function Profile(props: AuthProps) {
         document.title = "Profile";
     }, []);
 
+    /* Навигация при перенаправлении */
+    const navigate = useNavigate();
+
+    /* Обработка события ChangePlace */
+    const ChangePlaceLink = (event: React.FormEvent) => {
+        ChangePlace(event, props.handleLogout, props.token, navigate, props.setServerData)
+    }
+
     /* Декодирование полученных из токена данных */
-    interface JwtPayload {name: string; surname: string; email: string};
+    interface JwtPayload {name: string; surname: string; email: string, phone: string};
     let pdata = jwtDecode(props.token) as JwtPayload;
 
     /* Тестовая страница */
@@ -38,8 +48,13 @@ function Profile(props: AuthProps) {
                     <div className="flex-container">
                         <div className="user_place">
                             <div className="user_data">
+                                <div className="usericon">
+                                    <img src="../../../images/defaulticon.png" width={250} height={250}></img>
+                                </div>
                                 <div className="user_place_username">{pdata.name} {pdata.surname}</div> 
-                                <div className="user_place_username">{pdata.email}</div> 
+                                <div className="user_place_username">Email: <span className="pdata">{pdata.email}</span></div> 
+                                <div className="user_place_username">Phone nomber: <span className="pdata">{pdata.phone}</span></div>
+                                <button className="edit_button" id="/edit_profile" onClick={ChangePlaceLink}>Edit Profile</button>
                             </div>
                         </div>
                         <div className="schedule_table">

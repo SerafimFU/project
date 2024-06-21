@@ -57,6 +57,23 @@ export class UsersService {
     });
   }
 
+  /* Редактирование данных пользователя */
+    async email_update(id: number, email: string) {
+      return await this.usersRepository.update({
+        id,
+      }, {
+        email,
+      });
+    }
+
+    async phone_update(id: number, phone_number: string) {
+      return await this.usersRepository.update({
+        id,
+      }, {
+        phone_number,
+      });
+    }
+
   /* Время последней активности */
   async activeTime(id: number, activeTime: Date) {
     return await this.usersRepository.update({

@@ -195,6 +195,7 @@
     .user_place {
         width: 350px;
         padding-top: calc(2vh + 5px);
+        word-wrap: break-word;
     }
     /* Блок данных пользователя */
     .user_data {
@@ -204,8 +205,24 @@
     }
     /* Данные пользователя */
     .user_place_username {
-        font-size: calc(1rem + 0.5vw);
+        font-size: medium;
         font-weight: 600;
+        margin-bottom: 1vh;
+    }
+    /* Данные пользователя <p> */
+    .pdata {
+        margin: 0;
+        font-weight: normal;
+    }
+    /* Иконка пользователя */
+    .usericon {
+        margin-bottom: calc(2vh + 5px);
+    }
+    /* Кнопка редактирования профиля пользователя */
+    .edit_button {
+        background-color: #254360;
+        border-color: black;
+        color: rgb(209, 193, 193);
     }
 
 
@@ -288,9 +305,38 @@
             .little_Uname {
                 font-size: calc(1em + 0.5vw);
             }
+
+        /* Profile.tsx */
+
+            /* Данные пользователя */
+            .user_place_username {
+                margin-bottom: 0;
+            }
     }
 }
-  
+ 
+@media (min-width: 1px) {
+    @media (max-width: 419px) {
+        /* Top_line.tsx */  
+            
+            /* Имя пользователя верхней линии */
+            .top_line_username {
+                font-size: calc(0.75rem + 0.2vw);
+            }  
+    }
+}
+
+@media (min-width: 420px) {
+    @media (max-width: 600px) {
+        /* Top_line.tsx */  
+            
+            /* Имя пользователя верхней линии */
+            .top_line_username {
+                font-size: calc(1rem + 0.2vw);
+            }    
+    }
+}
+
 @media (min-width: 1px) {
     @media (max-width: 600px) {
         /* Top_line.tsx */  
@@ -298,7 +344,7 @@
             /* Малое название университета */
             .little_Uname {
                 font-size: calc(1em + 0.5vw);
-            }
+            } 
     }
 }
 

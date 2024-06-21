@@ -8,6 +8,8 @@ import Change_password from './components/entrance/Cange_password.tsx'
 import Forgot_password from './components/entrance/Forgot_password.tsx'
 import Profile from './components/profile/Profile.tsx'
 import Timetable from './components/profile/Timetable.tsx'
+import EditProfile from './components/profile/Main_logic/EditProfile/EditProfile.tsx'
+import Edit_password from './components/profile/Main_logic/EditProfile/EditPassword.tsx'
 import './App.css'
 
 /* App компонент отвечающий за сборку приложения */
@@ -70,6 +72,8 @@ function App() {
         <Route path="/change_password" element={<Change_password setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/profile" element={isLoggedIn ? <Profile handleLogout={handleLogout} token={token.access_token} isOpen={isOpen} setOpen={setOpen} serverData={serverData} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
         <Route path="/profile/timetable" element={isLoggedIn ? <Timetable handleLogout={handleLogout} token={token.access_token} isOpen={isOpen} setOpen={setOpen} serverData={serverData} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
+        <Route path="/edit_profile" element={isLoggedIn ? <EditProfile setToken={setToken} setDisplayError={setDisplayError} displayError={displayError} token={token.access_token} handleLogout={handleLogout} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
+        <Route path="/edit_password" element={isLoggedIn ? <Edit_password setDisplayError={setDisplayError} displayError={displayError} token={token.access_token} handleLogout={handleLogout} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
       </Routes>
     </BrowserRouter>
   )

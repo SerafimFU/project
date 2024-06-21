@@ -1,6 +1,6 @@
 /* Функция перехода между страницами авторизованного пользователя */
 
-async function ChangePlace(event: React.FormEvent, handlyLogout: () => any, token: string, navigate: (value: any) => any, setServerData: any) {
+async function ChangePlace(event: React.FormEvent, handleLogout: () => any, token: string, navigate: (value: any) => any, setServerData: any) {
     event.preventDefault();
 
     /* Прием пути, который передается как ID текущего объекта */
@@ -30,13 +30,13 @@ async function ChangePlace(event: React.FormEvent, handlyLogout: () => any, toke
         } else {
             console.log(response.status) /* Trash */
             if (response.status == 401) {
-                handlyLogout()
+                handleLogout()
                 console.log('Token has expired') /* Trash */
             }
         }
     /* Если токен не сохранен разлогиниваемся */
     } else {
-        handlyLogout()
+        handleLogout()
         console.log('Pass error') /* Trash */
     }
 }

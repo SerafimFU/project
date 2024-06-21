@@ -37,12 +37,31 @@ export class AuthService {
     }
   }
 
-  /* Создание токена */
+  /* Создание токена Login */
   async login(user: any) {
-    const payload = { email: user.email, sub: user.id, name: user.name, surname: user.surname };
+    const payload = { email: user.email, sub: user.id, name: user.name, surname: user.surname, phone: user.phone_number };
     return {
       access_token: this.jwtService.sign(payload),
     };
+  }
+
+  /* Создание токена Edit_Profile */
+  async edit_profile(user: any, createUserDto) {
+    const a = await this.usersService.findOne(user.id);
+    if ((a.password === createUserDto.password) && ((createUserDto.email != '') || (createUserDto.phone_number != ''))) {
+      if ((createUserDto.email != '') && (createUserDto.email != a.email)) {
+        this.usersService.email_update(user.id, createUserDto.email)
+      }
+      if ((createUserDto.phone_number != '') && (createUserDto.phone_number != a.phone_number)) {
+        this.usersService.phone_update(user.id, createUserDto.phone_number)
+      }
+      const payload = { email: user.email, sub: user.id, name: user.name, surname: user.surname, phone: user.phone_number };
+      return {
+        access_token: this.jwtService.sign(payload),
+      }
+    } else {
+      throw new HttpException('Client error', HttpStatus.CONFLICT);
+    }
   }
 
   /* Функция Logout-а */

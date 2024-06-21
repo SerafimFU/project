@@ -168,6 +168,14 @@
 .margin4p {
   margin-top: 40px;
 }
+.helptext {
+  color: white;
+}
+.inbutton {
+  height: calc(400px * 0.075);
+  background: none;
+  border: none;
+}
 
 
 @media (min-height: 1px) {

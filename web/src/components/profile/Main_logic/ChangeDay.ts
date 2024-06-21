@@ -1,6 +1,6 @@
 /* Функция смены отображаемого дня в календаре */
 
-async function ChangeDay(day: any, handlyLogout: () => any, token: string, setServerData: any) {
+async function ChangeDay(day: any, handleLogout: () => any, token: string, setServerData: any) {
     
     let Day = day.getDate();
     let month = day.getMonth() + 1;
@@ -30,13 +30,13 @@ async function ChangeDay(day: any, handlyLogout: () => any, token: string, setSe
         } else {
             console.log(response.status) /* Trash */
             if (response.status == 401) {
-                handlyLogout()
+                handleLogout()
                 console.log('Token has expired') /* Trash */
             }
         }
     /* Если токен не сохранен разлогиниваемся */
     } else {
-        handlyLogout()
+        handleLogout()
         console.log('Pass error') /* Trash */
     }
 }

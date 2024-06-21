@@ -1,7 +1,14 @@
 /* Функция смены пароля */
 
+/* Объявление массива для таймера */
+let timer: Array<number> = [];
+
 async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: string) => void) {
     event.preventDefault();
+
+    /* Остановка таймера */
+    timer.forEach((value) => clearTimeout(value))
+    timer.length = 0;
 
     /* Прием значений полей формы */
     const target = event.target as typeof event.target & {
@@ -47,6 +54,9 @@ async function SubmitHandler(event: React.FormEvent, setDisplayError: (value: st
         target.pass2.placeholder = "Passwords are not the same"
         target.pass2.className = "inputplacepass2"
     }
+    /* Установка таймера */
+    const timerID = setTimeout(() => setDisplayError(''), 3000) 
+    timer.push(timerID);
 }
 
 export default SubmitHandler
