@@ -45,7 +45,6 @@ function Timetable(props: AuthProps) {
                                         <div className="col-6 lesson_icone_place" id="type_block"><div className="lesson_icone_3" />Seminar</div>
                                         <div className="col-6 lesson_icone_place" id="type_block"><div className="lesson_icone_4" />Practical lesson</div>
                                     </div>
-                                    <div className=""></div>
                                 </div>
                             </div>
                         </div>
@@ -100,6 +99,7 @@ function Timetable(props: AuthProps) {
                             <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                         </div>
                     </div>
+                    {/* <Bot_line /> */}
                 </div>
                 <div className="col-md-1"></div>
             </div>    

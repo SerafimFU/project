@@ -28,6 +28,13 @@ export class AppController {
   async signup(@Body() createUserDto: CreateUserDto) {
     await this.authService.signup(createUserDto);
   }
+  
+  /* Обработка GET запроса на переход к Profile */
+  @UseGuards(JwtAuthGuard)
+  @Get('auth/profile')
+  getProfile(@Request() req) {
+    return req.user;
+  }
 
   /* Обработка GET запроса на переход к TimeTable */
   @UseGuards(JwtAuthGuard)
@@ -42,12 +49,5 @@ export class AppController {
   async dateChange(@Request() req, @Body() changeDateDto : ChangeDateDto) {
     const user = req.user
     return this.authService.dateChange(user, changeDateDto);
-  }
-
-  /* Пустой профиль */
-  @UseGuards(JwtAuthGuard)
-  @Get('profile')
-  getProfile(@Request() req) {
-    return req.user;
   }
 }

@@ -4,6 +4,8 @@ import ChangeDay from '../Main_logic/ChangeDay'
 import 'react-calendar/dist/Calendar.css'
 import './MyCalendar.css'
 
+/* Календарь React */
+
 /* Props компонента */
 type AuthProps = {
   handleLogout: () => void

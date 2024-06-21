@@ -1,330 +1,444 @@
 /* Стили страницы профиля */
 
-.mainspace {
-    background: #587794;
-    min-height: 100vh;
-}
+/* Основное пространство страницы */
+    .mainspace {
+        background: #587794;
+        min-height: 100vh;
+    }
+    /* Контейнер основного пространства страницы */
+    .flex-container {
+        display: flex;
+    }
 
-.top_line {
-    background: #254360;
-    height: calc(30px + 2vh);
-    width: calc(100% / 12 * 10);
-    position: fixed;
-}
 
-.little_Uname {
-    font-size: calc(1rem + 1em + 0.5vw);
-    font-weight: 600;
-    color: transparent;
-    background-clip: text;
-    background-image: linear-gradient(to left, #09cae8, #5b87b4);
-    -webkit-background-clip: text;
-    text-align: left;    
-    line-height: calc(30px + 2vh);
-}
+/* Top_line.tsx */
 
-.top_line_username {
-    font-size: calc(1rem + 0.5vw);
-    font-weight: 600;
-    line-height: calc(32px + 2vh);
-    float: right;
-}
+    /* Верхняя линия страницы */
+    .top_line {
+        background: #254360;
+        height: calc(30px + 2vh);
+        width: calc(100% / 12 * 10);
+        position: fixed;
+    }
+    /* Отступ верхней линии страницы */
+    .margin_top_line {
+        margin-top: calc(30px + 2vh);
+    }
+    /* Имя пользователя верхней линии */
+    .top_line_username {
+        font-size: calc(1rem + 0.5vw);
+        font-weight: 600;
+        line-height: calc(32px + 2vh);
+        float: right;
+    }
+    /* Малое название университета */
+    .little_Uname {
+        font-size: calc(1rem + 1em + 0.5vw);
+        font-weight: 600;
+        color: transparent;
+        background-clip: text;
+        background-image: linear-gradient(to left, #09cae8, #5b87b4);
+        -webkit-background-clip: text;
+        text-align: left;    
+        line-height: calc(30px + 2vh);
+    }
+    /* Кнопка меню */
+    .main_circle {
+        height: calc(20px + 2vh);
+        width: calc(20px + 2vh);
+        background-color: #989898;
+        border: 1px solid #ffffff;
+        border-radius: 50%;
+        float: right;
+        margin-left: calc(1vw + 2px);
+        margin-top: 5px;
+        margin-bottom: 5px;
+    }
+    /* Кнопка меню : active */
+    .main_circle:active {
+        background: #00b4cf;
+    }
+    /* Меню */
+    .menu {
+        position: absolute;
+        width: 20vw;
+        top: calc(100% + 1vh);
+        right: 10px;
+        padding: 10px;
+        background-color: #ffffff;
+        border: 10px solid #254360;
+        transform: translateY(-0.9vh);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.2s;
+    }
+    /* Меню : active */
+    .menu_active {
+        position: absolute;
+        width: 20vw;
+        top: calc(100% + 1vh);
+        right: 12px;
+        padding: 10px;
+        background-color: #ffffff;
+        border: 10px solid #254360;
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        transition: 0.2s;
+    }
+    /* Список разделов меню */
+    .menu_list {
+        text-align: left;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+    }
+    /* Разделы меню */
+    .menu_item {
+        padding-left: calc(0.5vw + 5px);
+        text-align: left;
+        padding-top: 0.5vh;
+        padding-bottom: 0.5vh;
+        width: 100%;
+    }
+    /* Разделы меню : hover */
+    .menu_item:hover {
+        background-color: #c0c0c0;
+    }
+    /* Кнопка разделов меню */
+    .link_button {
+        padding: 0;
+        width: 100%;
+        background-color: white;
+        border: none;
+    }
+    /* Кнопка Logout */
+    .logout_button {
+        width: 100%;
+        background-color: #587794;
+        border-color: black;
+    }
+    /* Кнопка Logout : hover */
+    .logout_button:hover {
+        background-color: #254360;
+        color: white;
+    }
 
-.main_circle {
-    height: calc(20px + 2vh);
-    width: calc(20px + 2vh);
-    background-color: #989898;
-    border: 1px solid #ffffff;
-    border-radius: 50%;
-    float: right;
-    margin-left: calc(1vw + 2px);
-    margin-top: 5px;
-    margin-bottom: 5px;
-}
 
-.main_circle:active {
-    background: #00b4cf;
-}
+/* Bot_line.tsx */
 
-.menu {
-    position: absolute;
-    width: 20vw;
-    top: calc(100% + 1vh);
-    right: 10px;
-    padding: 10px;
-    background-color: #ffffff;
-    border: 10px solid #254360;
-    transform: translateY(-0.9vh);
-    opacity: 0;
-    visibility: hidden;
-    transition: 0.2s;
-}
+    /* Нижняя линия страницы */
+    .bot_line {
+        background: #254360;
+        height: calc(30px + 2vh);
+        width: calc(100% / 12 * 10);
+        position: fixed;
+        bottom: 0;
+    }
+    /* Отступ нижней линии страницы */
+    .bot_line_margin {
+        margin-top: calc(30px + 2vh);
+    }
 
-.menu_active {
-    position: absolute;
-    width: 20vw;
-    top: calc(100% + 1vh);
-    right: 12px;
-    padding: 10px;
-    background-color: #ffffff;
-    border: 10px solid #254360;
-    transform: translateY(0);
-    opacity: 1;
-    visibility: visible;
-    transition: 0.2s;
-}
 
-.menu_list {
-    text-align: left;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-}
+/* Timetable.tsx */
 
-.menu_item {
-    padding-left: calc(0.5vw + 5px);
-    text-align: left;
-    padding-top: 0.5vh;
-    padding-bottom: 0.5vh;
-    width: 100%;
-}
+    /* Пространство календаря */
+    .calendar_table {
+        width: 350px;
+    }
+    /* Блок календаря */
+    .calendar_table2 {
+        position: fixed;
+        padding-top: calc(2vh + 5px);
+    }
+    /* Пространство расписания */
+    .schedule_table {
+        padding-top: calc(2vh + 5px);
+        width: calc(100% - 350px);
+    }
+    /* Блок урока */
+    .lesson_icone_place {
+        text-align: left;
+        width: 100%;
+    }
+    /* ID блока урока */
+    #type_block div {
+        display: inline-block;
+        margin-right: 10px;
+        width: 10px;
+        height: 10px;
+        padding-bottom: 3px;
+        border: 2px solid #254360;
+    }
+    /* Иконка первого типа урока */
+    .lesson_icone_1 {
+        background-color: #09cae8;
+    }
+    /* Иконка второго типа урока */
+    .lesson_icone_2 {
+        background-color: #3ae88b;
+    }
+    /* Иконка третьего типа урока */
+    .lesson_icone_3 {
+        background-color: #006edc;
+    }
+    /* Иконка четвертого типа урока */
+    .lesson_icone_4 {
+        background-color: red;
+    }
+    
 
-.menu_item:hover {
-    background-color: #c0c0c0;
-}
+/* Profile.tsx */
 
-.link_button {
-    padding: 0;
-    width: 100%;
-    background-color: white;
-    border: none;
-}
+    /* Пространство пользователя */
+    .user_place {
+        width: 350px;
+        padding-top: calc(2vh + 5px);
+    }
+    /* Блок данных пользователя */
+    .user_data {
+        position: fixed;
+        text-align: center;
+        width: 350px;
+    }
+    /* Данные пользователя */
+    .user_place_username {
+        font-size: calc(1rem + 0.5vw);
+        font-weight: 600;
+    }
 
-.logout_button {
-    width: 100%;
-    background-color: #587794;
-    border-color: black;
-}
 
-.logout_button:hover {
-    background-color: #254360;
-    color: white;
-}
+/* Schedule.tsx */
 
-.margin_top_line {
-    margin-top: calc(30px + 2vh);
-}
-
-.flex-container {
-    display: flex;
-}
-
-.calendar_table {
-    width: 350px;
-}
-
-.schedule_table {
-    padding-top: calc(2vh + 5px);
-    width: calc(100% - 350px);
-}
-
-.calendar_table2 {
-    position: fixed;
-    padding-top: calc(2vh + 5px);
-}
-
-.lessonplace {
-    width: 100%;
-}
-
-.lesson1 {
-    background-color: #09cae8;
-    margin-left: calc(1vw + 10px);
-    margin-right: calc(1vw + 10px);
-    margin-bottom: calc(2vh + 10px);
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-bottom: 1vh;
-    border: 10px solid #254360;
-}
-
-.lesson2 {
-    background-color: #3ae88b;
-    margin-left: calc(1vw + 10px);
-    margin-right: calc(1vw + 10px);
-    margin-bottom: calc(2vh + 10px);
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-bottom: 1vh;
-    border: 10px solid #254360;
-}
-
-.lesson3 {
-    background-color: #006edc;
-    margin-left: calc(1vw + 10px);
-    margin-right: calc(1vw + 10px);
-    margin-bottom: calc(2vh + 10px);
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-bottom: 1vh;
-    border: 10px solid #254360;
-}
-
-.lesson4 {
-    background-color: red;
-    margin-left: calc(1vw + 10px);
-    margin-right: calc(1vw + 10px);
-    margin-bottom: calc(2vh + 10px);
-    padding-left: 2vw;
-    padding-right: 2vw;
-    padding-bottom: 1vh;
-    border: 10px solid #254360;
-}
-
-.lesson_icone_1 {
-    background-color: #09cae8;
-}
-.lesson_icone_2 {
-    background-color: #3ae88b;
-}
-.lesson_icone_3 {
-    background-color: #006edc;
-}
-.lesson_icone_4 {
-    background-color: red;
-}
-
-.lesson_icone_place {
-    text-align: left;
-    width: 100%;
-}
-
-#type_block div {
-    display: inline-block;
-    margin-right: 10px;
-    width: 10px;
-    height: 10px;
-    padding-bottom: 3px;
-    border: 2px solid #254360;
-}
-
-.subject {
-    font-size: calc(1rem + 0.3vw);
-    font-weight: 700;
-    text-align: center;    
-}
-
-.lessonTime {
-    font-size: calc(0.8rem + 0.3vw);
-    font-weight: 550;
-    text-align: center;
-    padding-bottom: 0.5vh;
-}
-
-.lessonTheme {
-    font-size: calc(0.7rem + 0.3vw);
-    font-weight: 550;
-    text-align: justify;
-    text-align-last: center;
-}
+    /* Блок урока */
+    .lessonplace {
+        width: 100%;
+    }
+    /* Стили первого типа урока */
+    .lesson1 {
+        background-color: #09cae8;
+        margin-left: calc(1vw + 10px);
+        margin-right: calc(1vw + 10px);
+        margin-bottom: calc(2vh + 10px);
+        padding-left: 2vw;
+        padding-right: 2vw;
+        padding-bottom: 1vh;
+        border: 10px solid #254360;
+    }
+    /* Стили второг типа урока */
+    .lesson2 {
+        background-color: #3ae88b;
+        margin-left: calc(1vw + 10px);
+        margin-right: calc(1vw + 10px);
+        margin-bottom: calc(2vh + 10px);
+        padding-left: 2vw;
+        padding-right: 2vw;
+        padding-bottom: 1vh;
+        border: 10px solid #254360;
+    }
+    /* Стили третьего типа урока */
+    .lesson3 {
+        background-color: #006edc;
+        margin-left: calc(1vw + 10px);
+        margin-right: calc(1vw + 10px);
+        margin-bottom: calc(2vh + 10px);
+        padding-left: 2vw;
+        padding-right: 2vw;
+        padding-bottom: 1vh;
+        border: 10px solid #254360;
+    }
+    /* Стили четвертог типа урока */
+    .lesson4 {
+        background-color: red;
+        margin-left: calc(1vw + 10px);
+        margin-right: calc(1vw + 10px);
+        margin-bottom: calc(2vh + 10px);
+        padding-left: 2vw;
+        padding-right: 2vw;
+        padding-bottom: 1vh;
+        border: 10px solid #254360;
+    }
+    /* Данные урока */
+        .subject {
+            font-size: calc(1rem + 0.3vw);
+            font-weight: 700;
+            text-align: center;    
+        }
+        
+        .lessonTime {
+            font-size: calc(0.8rem + 0.3vw);
+            font-weight: 550;
+            text-align: center;
+            padding-bottom: 0.5vh;
+        }
+        
+        .lessonTheme {
+            font-size: calc(0.7rem + 0.3vw);
+            font-weight: 550;
+            text-align: justify;
+            text-align-last: center;
+        }
 
 @media (min-height: 1px) {
     @media (max-height: 700px) {
-        .little_Uname {
-            font-size: calc(1em + 0.5vw);
-        }
+        /* Top_line.tsx */  
+
+            /* Малое название университета */
+            .little_Uname {
+                font-size: calc(1em + 0.5vw);
+            }
     }
 }
   
 @media (min-width: 1px) {
     @media (max-width: 600px) {
-        .little_Uname {
-            font-size: calc(1em + 0.5vw);
-        }
+        /* Top_line.tsx */  
+            
+            /* Малое название университета */
+            .little_Uname {
+                font-size: calc(1em + 0.5vw);
+            }
     }
 }
 
 @media (min-width: 671px) {
     @media (max-width: 1100px) {
+        /* Контейнер основного пространства страницы */
         .flex-container {
             display: grid;
         }
         
-        .calendar_table {
-            width: 100%;
-        }
-        
-        .schedule_table {
-            width: 100%;
-        }
-        
-        .calendar_table2 {
-            display: flex;
-            position: static;
-        }
+        /* Timetable.tsx */
 
-        .announcement {
-            width: calc(100% - 350px);
-        }
+            /* Пространство календаря */
+            .calendar_table {
+                width: 100%;
+            }
+            /* Блок календаря */
+            .calendar_table2 {
+                display: flex;
+                position: static;
+            }
+            /* Блок объявлений - фиксированной информации */
+            .announcement {
+                width: calc(100% - 350px);
+            }
+        
+        /* Profile.tsx */
 
-        .lesson1, .lesson2, .lesson3, .lesson4 {
-            margin-left: 0;
-            margin-right: 0;
-        }
+            /* Пространство пользователя */
+            .user_place {
+                width: 100%;
+            }
+            /* Блок данных пользователя */
+            .user_data {
+                width: 100%;
+                position: static;
+            }
+
+        /* Timetable.tsx */
+
+            /* Пространство расписания */
+            .schedule_table {
+                width: 100%;
+            }
+        
+        /* Schedule.tsx */
+
+            /* Стили типов уроков */
+            .lesson1, .lesson2, .lesson3, .lesson4 {
+                margin-left: 0;
+                margin-right: 0;
+            }
     }
 }
 
 @media (min-width: 1px) {
     @media (max-width: 670px) {
+        /* Контейнер основного пространства страницы */
         .flex-container {
             display: grid;
         }
         
-        .calendar_table {
-            width: 100%;
-        }
-        
-        .schedule_table {
-            width: 100%;
-        }
-        
-        .calendar_table2 {
-            position: static;
-            text-align: center;
-        }
+        /* Timetable.tsx */
 
+            /* Пространство календаря */
+            .calendar_table {
+                width: 100%;
+            }
+
+        /* Profile.tsx */
+
+            /* Пространство пользователя */
+            .user_place {
+                width: 100%;
+            }
+            /* Блок данных пользователя */
+            .user_data {
+                width: 100%;
+                position: static;
+            }
+        
+        /* Timetable.tsx */
+
+            /* Пространство расписания */
+            .schedule_table {
+                width: 100%;
+            }
+            /* Блок календаря */
+            .calendar_table2 {
+                position: static;
+                text-align: center;
+            }
+            /* Блок объявлений - фиксированной информации */
+            .announcement {
+                display: inline-block;
+            }
+            /* Блок урока */
+            .lesson_icone_place {
+                padding-left: 50%;
+                min-width: 280px;
+            }
+        
+        /* Schedule.tsx */
+
+            /* Стили типов уроков */
+            .lesson1, .lesson2, .lesson3, .lesson4 {
+                margin-left: 0;
+                margin-right: 0;
+            }
+
+        /* Calendar */
         .react-calendar {
             display: inline-block;
-        }
-
-        .announcement {
-            display: inline-block;
-        }
-
-        .lesson_icone_place {
-            padding-left: 50%;
-            min-width: 280px;
-        }
-
-        .lesson1, .lesson2, .lesson3, .lesson4 {
-            margin-left: 0;
-            margin-right: 0;
         }
     }
 }
 
 @media (min-width: 1px) {
     @media (max-width: 767px) {
-        .top_line {
-            width: 100%;
-        }
-
-        .menu {
-            width: 50vw;
-        }
+        /* Top_line.tsx */
         
-        .menu_active {
-            width: 50vw;
-        }
+            /* Верхняя линия страницы */
+            .top_line {
+                width: 100%;
+            }
+
+            /* Меню */
+            .menu {
+                width: 50vw;
+            }
+            /* Меню : active */
+            .menu_active {
+                width: 50vw;
+            }
+
+        /* Bot_line.tsx */
+            
+            /* Верхняя линия страницы */
+            .bot_line {
+                width: 100%;
+            }
     }
 }

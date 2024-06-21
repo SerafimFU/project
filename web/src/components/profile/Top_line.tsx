@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import { useClickOutside } from '../hooks/useClickOutside'
 import LogOut from './Main_logic/Logout'
@@ -57,9 +57,7 @@ function Top_line(props: AuthProps) {
                     <nav className={(props.isOpen ? "menu_active" : "menu")}>
                         <ul className="menu_list">
                             <button className="link_button" onClick={ChangePlaceLink} id="/profile/timetable"><li className="menu_item">Timetable</li></button>
-                            <NavLink to="/profile/timetable"><li className="menu_item">Timetable</li></NavLink>
-                            <NavLink to="/profile"><li className="menu_item">Profile</li></NavLink>
-                            <NavLink to="/"><li className="menu_item">main</li></NavLink>
+                            <button className="link_button" onClick={ChangePlaceLink} id="/profile"><li className="menu_item">Profile</li></button>
                             <li><button className="logout_button" onClick={LogoutButton}>Log out</button></li>
                         </ul>
                     </nav>
