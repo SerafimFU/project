@@ -19,7 +19,7 @@ type AuthProps = {
 
 function Timetable(props: AuthProps) {
 
-    /* Смена заголовка вкладки в браузере закритие всплывающего меню */
+    /* Смена заголовка вкладки в браузере закрытие всплывающего меню */
     useEffect(() => {
         document.title = "Timetable";
     }, []);

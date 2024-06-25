@@ -2,7 +2,7 @@
 
 .enterbox {
   width: 360px;
-  height: 460px;
+  min-height: 460px;
   padding: 30px;
   position: relative;
   background: #34495e;
@@ -186,6 +186,22 @@
   }
   .update {
     margin-top: 10px;
+  }
+}
+}
+
+@media (min-height: 1px) {
+  @media (max-height: 600px) {
+  .enterbox {
+      margin-top: 5vh;
+  }
+}
+}
+
+@media (min-height: 601px) {
+  @media (max-height: 800px) {
+  .enterbox {
+      margin-top: 10vh;
   }
 }
 }

@@ -26,7 +26,7 @@ export class ScheduleService {
   }
 
   /* Выборка расписания группы */
-  async findLessonsToday(group_id: number, date: any): Promise<Schedule[]> {
+  async findLessonsToday(group_id: string, date: any): Promise<Schedule[]> {
     return this.scheduleRepository.find({
       where: {
         group_id,

@@ -13,9 +13,6 @@ export class Users {
   @Column({ type: "varchar", length: 21 })
   surname: string;
 
-  @Column({ type: "smallint" })
-  group_id: number;
-
   @Column({ type: "varchar", length: 319 })
   email: string;
 
@@ -24,6 +21,9 @@ export class Users {
 
   @Column({ type: "varchar", length: 45 })
   password: string;
+
+  @Column({ type: "varchar", length: 6 })
+  group_id: string;
 
   @Column({ default: false })
   isActive: boolean;

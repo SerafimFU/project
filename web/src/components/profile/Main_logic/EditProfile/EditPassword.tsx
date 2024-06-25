@@ -48,7 +48,7 @@ function Edit_password(props: AuthProps) {
                 <div className="col">
                     <form className="enterbox mx-auto" id="forgot_password-form" onSubmit={submitForm}>
                         <div className="margin03" />
-                        <h1>Change your password?</h1>
+                        <h1>Change your password</h1>
                         <div className="margin05" />
                         <input className="inputplace" type="email" name="email" placeholder="Enter your Email" required minLength={7} maxLength={319} onInvalid={InvalidInput} onInput={validInput} title="Please enter your Email address" />
                         <div className="inf">We will send a link to change your password to your Email</div>

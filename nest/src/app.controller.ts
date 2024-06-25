@@ -71,6 +71,14 @@ export class AppController {
       this.authService.activeTime(req.user);
       return req.user;
     }
+
+    /* Обработка GET запроса на переход к EditAvatar */
+    @UseGuards(JwtAuthGuard)
+    @Get('auth/edit_avatar')
+    getEditAvatar(@Request() req) {
+      this.authService.activeTime(req.user);
+      return req.user;
+    }
   
     /* Обработка GET запроса на переход к TimeTable */
     @UseGuards(JwtAuthGuard)

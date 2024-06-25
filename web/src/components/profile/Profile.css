@@ -194,7 +194,7 @@
     /* Пространство пользователя */
     .user_place {
         width: 350px;
-        padding-top: calc(2vh + 5px);
+        margin-top: calc(2vh + 5px);
         word-wrap: break-word;
     }
     /* Блок данных пользователя */
@@ -208,6 +208,15 @@
         font-size: medium;
         font-weight: 600;
         margin-bottom: 1vh;
+    }
+    /* Граница данных профиля */
+    .profile_border {
+        padding: 15px 10px;
+        border: 5px solid #254360;
+        margin-left: auto;
+        margin-right: auto;
+        max-width: 350px;
+        background-color: #738495;
     }
     /* Данные пользователя <p> */
     .pdata {
@@ -296,6 +305,55 @@
             text-align: justify;
             text-align-last: center;
         }
+
+/* EditAvatar.tsx */
+    
+    /* Элемент загрузки фото */
+        .photo_input {
+            display: none;
+        }
+    /* Поле вставки фото */
+        .input_block {
+            width: calc(300px * 0.92);
+            height: calc(800px * 0.075);
+            border: 1px solid #ffffff;
+            margin: calc(400px * 0.05) auto;
+            color: #ffffff;
+            padding-top: 5px;
+        }
+    /* Поле вставки фото : hover */
+        .input_block:hover {
+            cursor: pointer;
+        }
+    /* Фото */
+        .photo {
+            margin: 5px auto;
+            max-height: calc(2000px * 0.075 - 2px);
+            max-width: calc(300px * 0.92);
+        }
+    /* Поле фото */
+    .photo_box {
+        width: calc(300px * 0.92);
+        min-height: calc(800px * 0.075 - 2px);
+        border: 1px solid #ffffff;
+        margin: 0 auto calc(400px * 0.05) auto;
+        color: #ffffff;
+    }
+    /* Поле фото заполненное */
+    .photo_box2 {
+        width: calc(300px * 0.92);
+        min-height: calc(800px * 0.075 - 2px);
+        border: 1px solid #ffffff;
+        margin: 0 auto calc(400px * 0.05) auto;
+        color: #ffffff;
+        background-color: rgb(175, 175, 175);
+    }
+    /* Текст пустого поля фото */
+    .photo_box_text {
+        margin-top: calc(200px * 0.075);
+        color: rgb(175, 175, 175);
+    }
+    
 
 @media (min-height: 1px) {
     @media (max-height: 700px) {
@@ -425,7 +483,7 @@
                 width: 100%;
                 position: static;
             }
-        
+
         /* Timetable.tsx */
 
             /* Пространство расписания */

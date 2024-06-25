@@ -20,7 +20,7 @@ type AuthProps = {
 
 function Profile(props: AuthProps) {
 
-    /* Смена заголовка вкладки в браузере закритие всплывающего меню */
+    /* Смена заголовка вкладки в браузере закрытие всплывающего меню */
     useEffect(() => {
         document.title = "Profile";
     }, []);
@@ -34,7 +34,7 @@ function Profile(props: AuthProps) {
     }
 
     /* Декодирование полученных из токена данных */
-    interface JwtPayload {name: string; surname: string; email: string, phone: string};
+    interface JwtPayload {name: string; surname: string; email: string, phone: string, group_id: string};
     let pdata = jwtDecode(props.token) as JwtPayload;
 
     /* Тестовая страница */
@@ -48,44 +48,20 @@ function Profile(props: AuthProps) {
                     <div className="flex-container">
                         <div className="user_place">
                             <div className="user_data">
-                                <div className="usericon">
-                                    <img src="../../../images/defaulticon.png" width={250} height={250}></img>
+                                <div className="profile_border">
+                                    <div className="usericon">
+                                        <img src="../../../images/defaulticon.png" width={250} height={250}></img>
+                                    </div>
+                                    <div className="user_place_username">{pdata.name} {pdata.surname}</div> 
+                                    <div className="user_place_username">Email: <span className="pdata">{pdata.email}</span></div> 
+                                    <div className="user_place_username">Phone nomber: <span className="pdata">{pdata.phone}</span></div>
+                                    <div className="user_place_username">Group: <span className="pdata">{pdata.group_id}</span></div>
+                                    <button className="edit_button" id="/edit_profile" onClick={ChangePlaceLink}>Edit Profile</button>
                                 </div>
-                                <div className="user_place_username">{pdata.name} {pdata.surname}</div> 
-                                <div className="user_place_username">Email: <span className="pdata">{pdata.email}</span></div> 
-                                <div className="user_place_username">Phone nomber: <span className="pdata">{pdata.phone}</span></div>
-                                <button className="edit_button" id="/edit_profile" onClick={ChangePlaceLink}>Edit Profile</button>
                             </div>
                         </div>
                         <div className="schedule_table">
                             <NavLink to="/forgot_password">aaaa</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
-                            <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                             <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                             <NavLink to="/forgot_password">forgot_password</NavLink><br/>
                             <NavLink to="/forgot_password">forgot_password</NavLink><br/>

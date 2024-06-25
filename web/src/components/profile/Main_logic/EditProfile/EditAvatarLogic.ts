@@ -1,9 +1,9 @@
-/* Функция изменения данных пользователя */
+/* Функция смены аватара */
 
 /* Объявление массива для таймера */
 let timer: Array<number> = [];
 
-async function SubmitHandlerProfile(event: React.FormEvent, setDisplayError: (value: string) => void, token: string, handleLogout: () => void, setToken: any, pdata: any) {
+async function SubmitHandlerAvatar(event: React.FormEvent, setDisplayError: (value: string) => void, token: string, handleLogout: () => void, setToken: any, pdata: any) {
     event.preventDefault();
 
      /* Остановка таймера */
@@ -80,4 +80,4 @@ async function SubmitHandlerProfile(event: React.FormEvent, setDisplayError: (va
     }
 }
 
-export default SubmitHandlerProfile
+export default SubmitHandlerAvatar
