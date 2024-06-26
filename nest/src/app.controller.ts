@@ -1,8 +1,12 @@
-import { Controller, Get, Request, Post, UseGuards, Body } from '@nestjs/common';
+import { Controller, Get, Request, Post, UseGuards, Body, UseInterceptors, ParseFilePipe, MaxFileSizeValidator, FileTypeValidator, BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
 import { ChangeDateDto, CreateUserDto } from './auth/auth.create-user.dto';
+import { Express } from 'express';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { UploadedFile } from '@nestjs/common';
+import { diskStorage } from 'multer';
 
 @Controller()
 export class AppController {
@@ -45,6 +49,24 @@ export class AppController {
     const user = req.user
     return this.authService.dateChange(user, changeDateDto);
   }
+
+  /* Обработка POST сохранения аватара пользователя */
+  @UseGuards(JwtAuthGuard)
+  @Post('auth/change_avatar')
+  @UseInterceptors(FileInterceptor('file', {
+    storage: diskStorage({destination: './files', 
+    filename: (req, file, cb) => {cb(null, file.originalname);}}),
+    limits: {fileSize: 3000000},
+    fileFilter: (req, file, cb) => { 
+      if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.mimetype)) {
+        console.log(file.mimetype)
+        cb(new HttpException('Incvalid file type', HttpStatus.BAD_REQUEST), false);
+        return console.log(2)
+      }
+      cb(null, true);
+
+    } }))
+  uploadFile(@UploadedFile() file: Express.Multer.File) {}
 
   /* GET запросы на переход */
 

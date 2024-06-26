@@ -21,7 +21,7 @@ installback:
 	docker run --rm --tty \
 	-v ./nest:/bg \
 	-w /bg \
-	node:lts npm install --save @nestjs/typeorm typeorm mysql2
+	node:lts npm install -D @types/multer
 
 runback: 
 	docker run --rm --tty \

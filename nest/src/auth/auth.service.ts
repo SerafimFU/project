@@ -130,7 +130,9 @@ export class AuthService {
 
   /* Функция записи времени последней активности */
   async activeTime(user: any) {
-    this.usersService.activeTime(user.id, new Date(Date.now()))
+    var dateParametr = new Date();
+    dateParametr.setHours(dateParametr.getHours() + 3)
+    this.usersService.activeTime(user.id, dateParametr)
     return {};
   }
 
@@ -138,6 +140,7 @@ export class AuthService {
   @Cron('0 * * * * *')
   async handleCron() {
     var dateParametr = new Date();
+    dateParametr.setHours(dateParametr.getHours() + 3)
     dateParametr.setMinutes(dateParametr.getMinutes() - 15)
     //dateParametr.setSeconds(dateParametr.getSeconds() - 60);
     //dateParametr.setDate(dateParametr.getDate() - 1);

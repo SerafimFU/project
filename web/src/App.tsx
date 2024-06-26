@@ -75,7 +75,7 @@ function App() {
         <Route path="/profile/timetable" element={isLoggedIn ? <Timetable handleLogout={handleLogout} token={token.access_token} isOpen={isOpen} setOpen={setOpen} serverData={serverData} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
         <Route path="/edit_profile" element={isLoggedIn ? <EditProfile setToken={setToken} setDisplayError={setDisplayError} displayError={displayError} token={token.access_token} handleLogout={handleLogout} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
         <Route path="/edit_password" element={isLoggedIn ? <Edit_password setDisplayError={setDisplayError} displayError={displayError} token={token.access_token} handleLogout={handleLogout} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
-        <Route path="/edit_avatar" element={isLoggedIn ? <EditAvatar setToken={setToken} setDisplayError={setDisplayError} displayError={displayError} token={token.access_token} handleLogout={handleLogout} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
+        <Route path="/edit_avatar" element={isLoggedIn ? <EditAvatar setDisplayError={setDisplayError} displayError={displayError} token={token.access_token} handleLogout={handleLogout} setServerData={setServerData} /> : <Navigate replace to="/autorisation" />} />
       </Routes>
     </BrowserRouter>
   )

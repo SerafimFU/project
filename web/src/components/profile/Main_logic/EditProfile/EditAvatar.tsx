@@ -1,5 +1,4 @@
 import { useEffect, useState } from 'react'
-import { jwtDecode } from 'jwt-decode'
 import { useNavigate } from 'react-router-dom'
 import Submit from '../../../Submit'
 import SubmitHandlerAvatar from './EditAvatarLogic'
@@ -17,7 +16,6 @@ type AuthProps = {
     token: string
     handleLogout: () => void
     setServerData: any
-    setToken: any
 }
 
 function EditAvatar(props: AuthProps) { 
@@ -41,7 +39,7 @@ function EditAvatar(props: AuthProps) {
         return () => URL.revokeObjectURL(objectUrl)
     }, [selectedFile]);
 
-    /* Обнуление изображения */
+    /* Установка изображения */
     const onSelectFile = (e: any) => {
         if (!e.target.files || e.target.files.length === 0) {
             setSelectedFile(undefined)
@@ -53,13 +51,9 @@ function EditAvatar(props: AuthProps) {
     /* Навигация при перенаправлении */
     const navigate = useNavigate();
 
-    /* Декодирование полученных из токена данных */
-    interface JwtPayload {email: string, phone: string};
-    let pdata = jwtDecode(props.token) as JwtPayload;
-
     /* Обработка оправки формы */
     const submitForm = (event: React.FormEvent) => {
-        SubmitHandlerAvatar(event, props.setDisplayError, props.token, props.handleLogout, props.setToken, pdata)
+        SubmitHandlerAvatar(event, props.setDisplayError, props.token, props.handleLogout, selectedFile)
     }
 
     /* Обработка события ChangePlace */
@@ -76,8 +70,8 @@ function EditAvatar(props: AuthProps) {
                         <h1>Change Avatar</h1>
                         <div className="margin02" />
                         <label className="input_block">
-                            Choose images to upload<br/>(PNG, JPG)
-                            <input type="file" accept=".jpg, .jpeg, .png" className="photo_input" onChange={onSelectFile} />
+                            Choose images to upload<br/>(PNG, JPG, JPEG)
+                            <input type="file" name="avatar" accept=".jpg, .jpeg, .png" className="photo_input" onChange={onSelectFile} />
                         </label>
                         <div className={(!selectedFile ? "photo_box" : "photo_box2" )}>{(!selectedFile ? <div className="photo_box_text">Your avatar preview</div> : selectedFile && <img src={preview} className="photo" /> )}</div>
                         <Submit text="Confirm" style="button_autorisation" />
