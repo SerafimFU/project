@@ -16,7 +16,6 @@ async function SubmitHandlerAvatar(event: React.FormEvent, setDisplayError: (val
         if(!selectedFile) {
             setDisplayError('File not selected')
         } else {
-            console.log(selectedFile.size)
             const formData = new FormData();
             formData.append('file', selectedFile)
 
@@ -36,6 +35,9 @@ async function SubmitHandlerAvatar(event: React.FormEvent, setDisplayError: (val
                 if ((response.status == 404) || (response.status == 500)) {
                     setDisplayError('');
                     setDisplayError('1');
+                } else if (response.status == 400) {
+                    setDisplayError('')
+                    setDisplayError('Invalid file type')
                 } else {
                     console.log(response.status) /* Trash */
                     if (response.status == 401) {

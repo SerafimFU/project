@@ -1,4 +1,4 @@
-import { Controller, Get, Request, Post, UseGuards, Body, UseInterceptors, ParseFilePipe, MaxFileSizeValidator, FileTypeValidator, BadRequestException, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Get, Request, Post, UseGuards, Body, UseInterceptors, HttpStatus, ParseFilePipeBuilder } from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
@@ -56,17 +56,27 @@ export class AppController {
   @UseInterceptors(FileInterceptor('file', {
     storage: diskStorage({destination: './files', 
     filename: (req, file, cb) => {cb(null, file.originalname);}}),
-    limits: {fileSize: 3000000},
-    fileFilter: (req, file, cb) => { 
+    limits: {files: 1, fileSize: 3000000},
+    fileFilter: async (req, file, cb) => { 
       if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.mimetype)) {
-        console.log(file.mimetype)
-        cb(new HttpException('Incvalid file type', HttpStatus.BAD_REQUEST), false);
-        return console.log(2)
+        console.log(file.mimetype);
+        return cb(null, false);
       }
-      cb(null, true);
-
+      console.log(file);
+      return cb(null, true);
     } }))
-  uploadFile(@UploadedFile() file: Express.Multer.File) {}
+  uploadFile(@UploadedFile( 
+    new ParseFilePipeBuilder()
+    .addFileTypeValidator({
+      fileType: 'image/png|image/jpg|image/jpeg',
+    })
+    .addMaxSizeValidator({
+      maxSize: 3000000
+    })
+    .build({
+      errorHttpStatusCode: HttpStatus.BAD_REQUEST
+    }),
+  ) file: Express.Multer.File) {}
 
   /* GET запросы на переход */
 
