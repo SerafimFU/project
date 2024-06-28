@@ -7,6 +7,10 @@ import { Express } from 'express';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadedFile } from '@nestjs/common';
 import { diskStorage } from 'multer';
+import {v4 as uuidv4} from 'uuid';
+import { extname } from 'path';
+
+let uuid = uuidv4;
 
 @Controller()
 export class AppController {
@@ -53,19 +57,20 @@ export class AppController {
   /* Обработка POST сохранения аватара пользователя */
   @UseGuards(JwtAuthGuard)
   @Post('auth/change_avatar')
-  @UseInterceptors(FileInterceptor('file', {
-    storage: diskStorage({destination: './files', 
-    filename: (req, file, cb) => {cb(null, file.originalname);}}),
+  @UseInterceptors(
+    FileInterceptor('file', {
+    storage: diskStorage({destination: './files/avatars', 
+    filename: (req, file, cb) => {cb(null, `${uuid()}${extname(file.originalname)}`);}}),
     limits: {files: 1, fileSize: 3000000},
     fileFilter: async (req, file, cb) => { 
       if (!['image/png', 'image/jpg', 'image/jpeg'].includes(file.mimetype)) {
-        console.log(file.mimetype);
         return cb(null, false);
       }
-      console.log(file);
       return cb(null, true);
     } }))
-  uploadFile(@UploadedFile( 
+  async uploadFile(
+    @Request() req,
+    @UploadedFile( 
     new ParseFilePipeBuilder()
     .addFileTypeValidator({
       fileType: 'image/png|image/jpg|image/jpeg',
@@ -76,7 +81,12 @@ export class AppController {
     .build({
       errorHttpStatusCode: HttpStatus.BAD_REQUEST
     }),
-  ) file: Express.Multer.File) {}
+    ) file: Express.Multer.File) {
+      console.log(req.user)
+    this.authService.activeTime(req.user);
+    await this.authService.saveAvatar(req.user, file)
+  }
+
 
   /* GET запросы на переход */
 

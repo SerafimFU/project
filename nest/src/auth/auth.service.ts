@@ -2,7 +2,9 @@ import { Injectable, HttpException, HttpStatus, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../database/users/users.service'
 import { ScheduleService } from 'src/database/schedule/schedule.service';
+import { AvatarsService } from 'src/database/avatars/avatars.service';
 import { Cron } from '@nestjs/schedule';
+import { dirname } from 'path';
 
 @Injectable()
 export class AuthService {
@@ -10,6 +12,7 @@ export class AuthService {
     private jwtService: JwtService,
     private usersService: UsersService,
     private scheduleService: ScheduleService,
+    private avatarService: AvatarsService,
   ) {}
   
   private readonly logger = new Logger(AuthService.name);
@@ -125,6 +128,25 @@ export class AuthService {
       throw new HttpException('This Email or phone number already used', HttpStatus.CONFLICT);
     } else {
       this.usersService.createUser({ name: createUserDto.username, surname: createUserDto.surname, email: createUserDto.email, phone_number: createUserDto.phone_number, password: createUserDto.password });
+    }
+  }
+
+  /* Функция сохранения аватара */
+  async saveAvatar(user: any, file: any) {
+    console.log(user, file);
+    const filename_extension = file.filename.split('.').reverse()[0];
+    const filename = file.filename.split('.').reverse()[1];
+    const path = dirname(file.path);
+    if ((filename_extension == null) || (filename == null) || (path == null)) {
+      throw new HttpException('Unable to read file', HttpStatus.UNPROCESSABLE_ENTITY);
+    } else {
+      console.log(filename, filename_extension, path)
+      const a_id = await this.avatarService.saveAvatar({ filename: filename, filename_extension: filename_extension, path: path });
+      const uavatar = await this.usersService.findOne(user.id);
+      if (uavatar.avatar_id != null) {
+        this.avatarService.delete(uavatar.avatar_id)
+      } 
+      this.usersService.newAvatar(user.id, a_id.id)
     }
   }
 

@@ -14,8 +14,13 @@ async function SubmitHandlerAvatar(event: React.FormEvent, setDisplayError: (val
     /* Отправка значений на сервер */
     if(token != null) {
         if(!selectedFile) {
+            setDisplayError('');
             setDisplayError('File not selected')
+        } else if(selectedFile.size >= 3000000) {
+            setDisplayError('');
+            setDisplayError('File too large');
         } else {
+            console.log(selectedFile.size)
             const formData = new FormData();
             formData.append('file', selectedFile)
 

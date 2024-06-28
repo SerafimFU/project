@@ -25,6 +25,9 @@ export class Users {
   @Column({ type: "varchar", length: 6 })
   group_id: string;
 
+  @Column({ type: "int", default: null})
+  avatar_id: number;
+
   @Column({ default: false })
   isActive: boolean;
 

@@ -57,6 +57,15 @@ export class UsersService {
     });
   }
 
+  /* Смена состояния активности */
+  async newAvatar(id: number, avatar_id: number) {
+    return await this.usersRepository.update({
+      id,
+    }, {
+      avatar_id,
+    });
+  }
+
   /* Редактирование данных пользователя */
     async email_update(id: number, email: string) {
       return await this.usersRepository.update({

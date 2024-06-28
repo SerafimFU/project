@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from 'react-router-dom'
 import { jwtDecode } from 'jwt-decode'
 import Top_line from './Top_line'
 import ChangePlace from './Main_logic/ChangePlace'
-import './Profile.css' 
+import './Profile.css'
 
 
 /* Компонент профиля */
