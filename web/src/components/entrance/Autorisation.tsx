@@ -12,8 +12,9 @@ import './Enterance.css'
 type AuthProps = {
     handleLogin: () => void
     setDisplayError (value: string) : void
-    displayError: string;
-    setToken: any;
+    displayError: string
+    setToken: any
+    setAvatar (value: string) : void
 }
 
 function Autorisation(props: AuthProps) {
@@ -29,7 +30,7 @@ function Autorisation(props: AuthProps) {
 
     /* Обработка события Logoin */
     const submitForm = (event: React.FormEvent) => {
-        SubmitHandler(event, props.handleLogin, props.setDisplayError, props.setToken)
+        SubmitHandler(event, props.handleLogin, props.setDisplayError, props.setToken, props.setAvatar)
     }
 
     return (

@@ -44,9 +44,19 @@ export class AuthService {
   /* Создание токена Login */
   async login(user: any) {
     const payload = { email: user.email, sub: user.id, name: user.name, surname: user.surname, phone: user.phone_number, group_id: user.group_id };
-    return {
-      access_token: this.jwtService.sign(payload),
-    };
+    const uavatar = await this.usersService.findOne(user.id);
+    if (uavatar.avatar_id != null) {
+      const avatar = await this.avatarService.findOne(uavatar.avatar_id)
+      return {
+        token: {access_token: this.jwtService.sign(payload)},
+        avatar: avatar,
+      };
+    } else {
+      return {
+        token: {access_token: this.jwtService.sign(payload)},
+        avatar: null,
+      };
+    }
   }
 
   /* Создание токена Edit_Profile */

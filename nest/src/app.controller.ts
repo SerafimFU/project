@@ -21,7 +21,7 @@ export class AppController {
   @Post('auth/login')
   async login(@Request() req) {
     this.authService.activeTime(req.user);
-    return this.authService.login(req.user);
+    return this.authService.login(req.user)
   }
 
   /* Обработка POST запроса на изменение данных пользователя */

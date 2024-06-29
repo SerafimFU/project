@@ -3,7 +3,7 @@
 /* Объявление массива для таймера */
 let timer: Array<number> = [];
 
-async function SubmitHandler(event: React.FormEvent, handlyLogin: () => any, setDisplayError: (value: string) => void, setToken: any) {
+async function SubmitHandler(event: React.FormEvent, handlyLogin: () => any, setDisplayError: (value: string) => void, setToken: any, setAvatar: (value: string) => void) {
     event.preventDefault();
 
     /* Остановка таймера */
@@ -34,9 +34,13 @@ async function SubmitHandler(event: React.FormEvent, handlyLogin: () => any, set
     
     /* Если ответ OK получаем токен */
     if(response.status == 201) {
-        console.log(response), /* Trash */
-        setToken(await response.json())
-        handlyLogin()
+        console.log(response); /* Trash */
+        const res = (await response.json());
+        setToken(res.token);
+        if (res.avatar != null) {
+            setAvatar(`${res.avatar.path}/${res.avatar.filename}.${res.avatar.filename_extension}`);
+        }
+        handlyLogin();
     } else { 
         if ((response.status == 404) || (response.status == 500)) {
             setDisplayError('');

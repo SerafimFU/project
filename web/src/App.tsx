@@ -17,7 +17,7 @@ import './App.css'
 
 /* Определение области значений */
 interface Token {
-  access_token: string
+  access_token: string,
 }
 
 interface ServerData {
@@ -49,9 +49,9 @@ function App() {
 
   /* Функция Logout */
   const handleLogout = () => {
-    setIsLoggedIn(false);
-    token.access_token = null;
-    setOpen(false);
+    setIsLoggedIn(false)
+    token.access_token = null
+    setOpen(false)
     setAvatar('')
     console.log(token) /* Trash */
   };
@@ -71,7 +71,7 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Main />} />
-        <Route path="/autorisation" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Autorisation handleLogin={handleLogin} setDisplayError={setDisplayError} displayError={displayError} setToken={setToken} />} />
+        <Route path="/autorisation" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Autorisation handleLogin={handleLogin} setDisplayError={setDisplayError} displayError={displayError} setToken={setToken} setAvatar={setAvatar} />} />
         <Route path="/registration" element={isLoggedIn ? <Navigate replace to="/profile" /> :<Registration setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/forgot_password" element={isLoggedIn ? <Navigate replace to="/profile" /> : <Forgot_password setDisplayError={setDisplayError} displayError={displayError} />} />
         <Route path="/change_password" element={<Change_password setDisplayError={setDisplayError} displayError={displayError} />} />
