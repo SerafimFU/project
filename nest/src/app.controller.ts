@@ -59,7 +59,7 @@ export class AppController {
   @Post('auth/change_avatar')
   @UseInterceptors(
     FileInterceptor('file', {
-    storage: diskStorage({destination: './files/avatars', 
+    storage: diskStorage({destination: './public/files/avatars',
     filename: (req, file, cb) => {cb(null, `${uuid()}${extname(file.originalname)}`);}}),
     limits: {files: 1, fileSize: 3000000},
     fileFilter: async (req, file, cb) => { 
@@ -82,9 +82,8 @@ export class AppController {
       errorHttpStatusCode: HttpStatus.BAD_REQUEST
     }),
     ) file: Express.Multer.File) {
-      console.log(req.user)
     this.authService.activeTime(req.user);
-    await this.authService.saveAvatar(req.user, file)
+    return await this.authService.saveAvatar(req.user, file)
   }
 
 

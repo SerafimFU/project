@@ -5,6 +5,7 @@ import { ScheduleService } from 'src/database/schedule/schedule.service';
 import { AvatarsService } from 'src/database/avatars/avatars.service';
 import { Cron } from '@nestjs/schedule';
 import { dirname } from 'path';
+import * as fs from 'fs';
 
 @Injectable()
 export class AuthService {
@@ -133,20 +134,28 @@ export class AuthService {
 
   /* Функция сохранения аватара */
   async saveAvatar(user: any, file: any) {
-    console.log(user, file);
     const filename_extension = file.filename.split('.').reverse()[0];
     const filename = file.filename.split('.').reverse()[1];
-    const path = dirname(file.path);
+    let path = dirname(file.path);
+    let path2 = path.split('/').reverse();
+    path2.pop(); 
+    path = path2.reverse().join('/');
     if ((filename_extension == null) || (filename == null) || (path == null)) {
       throw new HttpException('Unable to read file', HttpStatus.UNPROCESSABLE_ENTITY);
     } else {
-      console.log(filename, filename_extension, path)
-      const a_id = await this.avatarService.saveAvatar({ filename: filename, filename_extension: filename_extension, path: path });
+      const avatar = await this.avatarService.saveAvatar({ filename: filename, filename_extension: filename_extension, path: path });
       const uavatar = await this.usersService.findOne(user.id);
       if (uavatar.avatar_id != null) {
-        this.avatarService.delete(uavatar.avatar_id)
+        const old_avatar = await this.avatarService.findOne(uavatar.avatar_id)
+        fs.unlink(`./public/${old_avatar.path}/${old_avatar.filename}.${old_avatar.filename_extension}`, (err) => {
+          if (err) {
+          console.log(err);
+          }
+        });
+        this.avatarService.delete(uavatar.avatar_id); 
       } 
-      this.usersService.newAvatar(user.id, a_id.id)
+      this.usersService.newAvatar(user.id, avatar.id);
+      return avatar;
     }
   }
 

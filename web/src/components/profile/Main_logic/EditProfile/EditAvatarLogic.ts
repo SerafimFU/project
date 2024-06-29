@@ -3,7 +3,7 @@
 /* Объявление массива для таймера */
 let timer: Array<number> = [];
 
-async function SubmitHandlerAvatar(event: React.FormEvent, setDisplayError: (value: string) => void, token: string, handleLogout: () => void, selectedFile: any) {
+async function SubmitHandlerAvatar(event: React.FormEvent, setDisplayError: (value: string) => void, token: string, handleLogout: () => void, selectedFile: any, setAvatar: (value: string) => void) {
     event.preventDefault();
 
     /* Остановка таймера */
@@ -20,7 +20,7 @@ async function SubmitHandlerAvatar(event: React.FormEvent, setDisplayError: (val
             setDisplayError('');
             setDisplayError('File too large');
         } else {
-            console.log(selectedFile.size)
+            console.log(selectedFile.size) /* Trash */
             const formData = new FormData();
             formData.append('file', selectedFile)
 
@@ -31,10 +31,10 @@ async function SubmitHandlerAvatar(event: React.FormEvent, setDisplayError: (val
             },
             body: formData
             });
-            console.log(selectedFile)
-            /* Здесь надо добавить редирект */
             console.log(response) /* Trash */
             if(response.status == 201) {
+                const a = (await response.json())
+                setAvatar(`${a.path}/${a.filename}.${a.filename_extension}`);
                 setDisplayError('Done')
             } else { 
                 if ((response.status == 404) || (response.status == 500)) {

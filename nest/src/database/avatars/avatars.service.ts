@@ -26,8 +26,8 @@ export class AvatarsService {
   }
 
   /* Удаление строки */
-  async delete(id: number) {
-    return await this.usersRepository.delete({
+  delete(id: number) {
+    return this.usersRepository.delete({
       id,
     })
   }

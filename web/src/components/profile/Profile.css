@@ -227,6 +227,11 @@
     .usericon {
         margin-bottom: calc(2vh + 5px);
     }
+    /* Фото пользователя */
+    .avatar {
+        max-width: 250px;
+        max-height: 250px;
+    }
     /* Кнопка редактирования профиля пользователя */
     .edit_button {
         background-color: #254360;

@@ -16,6 +16,7 @@ type AuthProps = {
     setOpen: any
     serverData: string
     setServerData: any
+    avatar: string
 }
 
 function Profile(props: AuthProps) {
@@ -50,7 +51,7 @@ function Profile(props: AuthProps) {
                             <div className="user_data">
                                 <div className="profile_border">
                                     <div className="usericon">
-                                        <img src="../../../images/defaulticon.png" width={250} height={250}></img>
+                                        <img src={((props.avatar == '') ? "../../../images/defaulticon.png" : `http://localhost:3000/${props.avatar}` )} className="avatar"></img>
                                     </div>
                                     <div className="user_place_username">{pdata.name} {pdata.surname}</div> 
                                     <div className="user_place_username">Email: <span className="pdata">{pdata.email}</span></div> 

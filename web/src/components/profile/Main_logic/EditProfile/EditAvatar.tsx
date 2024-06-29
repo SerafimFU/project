@@ -16,6 +16,7 @@ type AuthProps = {
     token: string
     handleLogout: () => void
     setServerData: any
+    setAvatar (value: string) : void
 }
 
 function EditAvatar(props: AuthProps) { 
@@ -53,7 +54,7 @@ function EditAvatar(props: AuthProps) {
 
     /* Обработка оправки формы */
     const submitForm = (event: React.FormEvent) => {
-        SubmitHandlerAvatar(event, props.setDisplayError, props.token, props.handleLogout, selectedFile)
+        SubmitHandlerAvatar(event, props.setDisplayError, props.token, props.handleLogout, selectedFile, props.setAvatar)
     }
 
     /* Обработка события ChangePlace */
