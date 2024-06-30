@@ -7,7 +7,9 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { UsersModule } from '../database/users/users.module';
 import { ScheduleModule } from 'src/database/schedule/schedule.module';
+import { GroupsModule } from 'src/database/groups/groups.module';
 import { AvatarsModule } from 'src/database/avatars/avatars.module';
+import { Proxy_group_scheduleModule } from 'src/database/proxy_group-schedule/proxy_group-schedule.module';
 import { CreateUserDto } from './auth.create-user.dto';
 
 /* Модули AUTH и установка времени действия токена */
@@ -17,6 +19,8 @@ import { CreateUserDto } from './auth.create-user.dto';
     UsersModule,
     ScheduleModule,
     AvatarsModule,
+    GroupsModule,
+    Proxy_group_scheduleModule,
     PassportModule,
     JwtModule.register({
       secret: jwtConstants.secret,

@@ -13,9 +13,6 @@ export class Schedule {
   @Column({ type: "time" })
   lessonTime: Date;
 
-  @Column({ type: "varchar", length: 6 })
-  group_id: string;
-
   @Column({ type: "varchar", length: 40 })
   subject: string;
 

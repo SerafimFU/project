@@ -14,7 +14,6 @@ type AuthProps = {
     token: string
     isOpen: boolean
     setOpen: any
-    serverData: string
     setServerData: any
     avatar: string
 }
@@ -44,7 +43,7 @@ function Profile(props: AuthProps) {
             <div className="row">
                 <div className="col-md-1"></div> 
                 <div className="col-12 col-md-10 mainspace">
-                    <Top_line handleLogout={props.handleLogout} token={props.token} isOpen={props.isOpen} setOpen={props.setOpen} setServerData={props.setServerData} />
+                    <Top_line handleLogout={props.handleLogout} token={props.token} isOpen={props.isOpen} setOpen={props.setOpen} setServerData={props.setServerData}/>
                     <div className="margin_top_line" ></div>
                     <div className="flex-container">
                         <div className="user_place">

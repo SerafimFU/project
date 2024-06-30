@@ -3,6 +3,8 @@ import { JwtService } from '@nestjs/jwt';
 import { UsersService } from '../database/users/users.service'
 import { ScheduleService } from 'src/database/schedule/schedule.service';
 import { AvatarsService } from 'src/database/avatars/avatars.service';
+import { GroupsService } from 'src/database/groups/groups.service';
+import { Proxy_group_scheduleService } from 'src/database/proxy_group-schedule/proxy_group-schedule.service';
 import { Cron } from '@nestjs/schedule';
 import { dirname } from 'path';
 import * as fs from 'fs';
@@ -14,6 +16,8 @@ export class AuthService {
     private usersService: UsersService,
     private scheduleService: ScheduleService,
     private avatarService: AvatarsService,
+    private groupsService: GroupsService,
+    private proxy_group_scheduleService: Proxy_group_scheduleService,
   ) {}
   
   private readonly logger = new Logger(AuthService.name);
@@ -94,42 +98,102 @@ export class AuthService {
     let year = date.getFullYear();
     let currentDate = `${year}-${month}-${day}`;
 
-    const data = await this.scheduleService.findLessonsToday(object.group_id, currentDate);
-    for (let i = 0; i < data.length - 1; i += 1) {
+    const data = await this.scheduleService.findLessonsToday(currentDate);
+    const group = await this.proxy_group_scheduleService.findSchedule(object.group_id);
+    let newGroup = [];
+    for (let i = 0; i <= group.length - 1; i += 1) {
+      newGroup[i] = group[i].lesson_id;
+    };
+    let gData = [];
+    let newData = [];
+    let count = 0;
+    let c = '';
+    function checkAvailability(arr, val) {
+      return arr.some(function (arrVal) {
+        return val === arrVal;
+      });
+    }
+    for (let i = 0; i <= data.length - 1; i += 1) {
+      if (checkAvailability(newGroup, data[i].id)) {
+        const a = await this.proxy_group_scheduleService.findGroup(data[i].id);
+        for (let z = 0; z <= a.length - 1; z += 1) {
+          c = c + a[z].group_id + ' ';
+        };
+        gData[count] = c;
+        c = ''
+        newData[count] = data[i];
+        count += 1;
+      }
+    }
+    for (let i = 0; i < newData.length - 1; i += 1) {
       let indexMin = i;
-      for (let j = i + 1; j < data.length; j += 1) {
-        if (data[j].lessonTime < data[indexMin].lessonTime) {
+      for (let j = i + 1; j < newData.length; j += 1) {
+        if (newData[j].lessonTime < newData[indexMin].lessonTime) {
           indexMin = j;
         }
       }
-      const temporary = data[i];
-      data[i] = data[indexMin];
-      data[indexMin] = temporary;
+      const temporary = newData[i];
+      const temporary2 = gData[i];
+      newData[i] = newData[indexMin];
+      gData[i] = gData[indexMin];
+      newData[indexMin] = temporary;
+      gData[indexMin] = temporary2;
     }
     return {
-      data,
+      newData,
+      gData,
     };
   }
 
   /* Функция перехода по датам в Timetable + выборка дат в порядке возрастания */
   async dateChange(user: any, changeDateDto) {
     const object = await this.usersService.findOne(user.id);
-    const data = await this.scheduleService.findLessonsToday(object.group_id, changeDateDto.data);
-      for (let i = 0; i < data.length - 1; i += 1) {
-        let indexMin = i;
-        for (let j = i + 1; j < data.length; j += 1) {
-          if (data[j].lessonTime < data[indexMin].lessonTime) {
-            indexMin = j;
-          }
-        }
-        const temporary = data[i];
-        data[i] = data[indexMin];
-        data[indexMin] = temporary;
-      }
-    return {
-      data,
+    const data = await this.scheduleService.findLessonsToday(changeDateDto.data);
+    const group = await this.proxy_group_scheduleService.findSchedule(object.group_id);
+    let newGroup = [];
+    for (let i = 0; i <= group.length - 1; i += 1) {
+      newGroup[i] = group[i].lesson_id;
     };
-  }
+    let gData = [];
+    let newData = [];
+    let count = 0;
+    let c = '';
+    function checkAvailability(arr, val) {
+      return arr.some(function (arrVal) {
+        return val === arrVal;
+      });
+    }
+    for (let i = 0; i <= data.length - 1; i += 1) {
+      if (checkAvailability(newGroup, data[i].id)) {
+        const a = await this.proxy_group_scheduleService.findGroup(data[i].id);
+        for (let z = 0; z <= a.length - 1; z += 1) {
+          c = c + a[z].group_id + ' ';
+        };
+        gData[count] = c;
+        c = ''
+        newData[count] = data[i];
+        count += 1;
+      }
+    }
+    for (let i = 0; i < newData.length - 1; i += 1) {
+      let indexMin = i;
+      for (let j = i + 1; j < newData.length; j += 1) {
+        if (newData[j].lessonTime < newData[indexMin].lessonTime) {
+          indexMin = j;
+        }
+      }
+      const temporary = newData[i];
+      const temporary2 = gData[i];
+      newData[i] = newData[indexMin];
+      gData[i] = gData[indexMin];
+      newData[indexMin] = temporary;
+      gData[indexMin] = temporary2;
+    }
+    return {
+      newData,
+      gData,
+    };
+  } 
 
   /* Функция регистрации пользователя */
   async signup(createUserDto) {
@@ -188,3 +252,57 @@ export class AuthService {
     await this.usersService.checkActivity(dateParametr);
   }
 } 
+
+
+  /*
+
+  Функция получения данных Timetable 
+  
+  async timetable(user: any) {
+    const object = await this.usersService.findOne(user.id);
+    const date = new Date();
+
+    let day = date.getDate();
+    let month = date.getMonth() + 1;
+    let year = date.getFullYear();
+    let currentDate = `${year}-${month}-${day}`;
+
+    const data = await this.scheduleService.findLessonsToday(object.group_id, currentDate);
+    for (let i = 0; i < data.length - 1; i += 1) {
+      let indexMin = i;
+      for (let j = i + 1; j < data.length; j += 1) {
+        if (data[j].lessonTime < data[indexMin].lessonTime) {
+          indexMin = j;
+        }
+      }
+      const temporary = data[i];
+      data[i] = data[indexMin];
+      data[indexMin] = temporary;
+    }
+    return {
+      data,
+    };
+  }
+
+  Функция перехода по датам в Timetable + выборка дат в порядке возрастания
+
+  async dateChange(user: any, changeDateDto) {
+    const object = await this.usersService.findOne(user.id);
+    const data = await this.scheduleService.findLessonsToday(object.group_id, changeDateDto.data);
+      for (let i = 0; i < data.length - 1; i += 1) {
+        let indexMin = i;
+        for (let j = i + 1; j < data.length; j += 1) {
+          if (data[j].lessonTime < data[indexMin].lessonTime) {
+            indexMin = j;
+          }
+        }
+        const temporary = data[i];
+        data[i] = data[indexMin];
+        data[indexMin] = temporary;
+      }
+    return {
+      data,
+    };
+  }
+
+  */

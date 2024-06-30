@@ -26,7 +26,8 @@ async function ChangeDay(day: any, handleLogout: () => any, token: string, setSe
         if(response.ok) {
             console.log(response) /* Trash */
             const a = (await response.json())
-            setServerData(a.data)
+            setServerData(a)
+            console.log(a)
         } else {
             console.log(response.status) /* Trash */
             if (response.status == 401) {

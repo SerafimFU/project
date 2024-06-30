@@ -23,8 +23,7 @@ async function ChangePlace(event: React.FormEvent, handleLogout: () => any, toke
         if(response.ok) {
             console.log(response) /* Trash */
             if (B == "/profile/timetable") {
-                const a = (await response.json()) 
-                setServerData(a.data)
+                setServerData(await response.json() )
             }
             navigate(target.id)
         } else {

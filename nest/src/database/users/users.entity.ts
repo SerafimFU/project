@@ -22,7 +22,7 @@ export class Users {
   @Column({ type: "varchar", length: 45 })
   password: string;
 
-  @Column({ type: "varchar", length: 6 })
+  @Column({ type: "varchar", length: 6, default: null })
   group_id: string;
 
   @Column({ type: "int", default: null})
