@@ -107,7 +107,7 @@ export class AuthService {
     let gData = [];
     let newData = [];
     let count = 0;
-    let c = '';
+    let c = [];
     function checkAvailability(arr, val) {
       return arr.some(function (arrVal) {
         return val === arrVal;
@@ -117,10 +117,10 @@ export class AuthService {
       if (checkAvailability(newGroup, data[i].id)) {
         const a = await this.proxy_group_scheduleService.findGroup(data[i].id);
         for (let z = 0; z <= a.length - 1; z += 1) {
-          c = c + a[z].group_id + ' ';
+          c[z] = (' ' + a[z].group_id );
         };
         gData[count] = c;
-        c = ''
+        c = [];
         newData[count] = data[i];
         count += 1;
       }
@@ -157,7 +157,7 @@ export class AuthService {
     let gData = [];
     let newData = [];
     let count = 0;
-    let c = '';
+    let c = [];
     function checkAvailability(arr, val) {
       return arr.some(function (arrVal) {
         return val === arrVal;
@@ -167,10 +167,10 @@ export class AuthService {
       if (checkAvailability(newGroup, data[i].id)) {
         const a = await this.proxy_group_scheduleService.findGroup(data[i].id);
         for (let z = 0; z <= a.length - 1; z += 1) {
-          c = c + a[z].group_id + ' ';
+          c[z] = (' ' + a[z].group_id );
         };
         gData[count] = c;
-        c = ''
+        c = [];
         newData[count] = data[i];
         count += 1;
       }

@@ -1,3 +1,5 @@
+import '../Profile.css'
+import '../../entrance/Enterance.css'
 /* Функция вывода расписания */
 
 function Schedule(serverData: any) {
@@ -7,7 +9,7 @@ function Schedule(serverData: any) {
     const gdata = serverData.serverData.gData;
     console.log(serverData)
     console.log(data)
-    console.log(gdata)
+    console.log(gdata[2])
     if (serverData != null) {
         const length = data.length;
         let li = [];
@@ -17,6 +19,7 @@ function Schedule(serverData: any) {
                 <div key={count} className="lessonplace">
                     <div className={((data[count].type == 1) ? "lesson1" : ((data[count].type == 2) ? "lesson2" : ((data[count].type == 3) ? "lesson3" : "lesson4")))}>
                         <div className="subject">{data[count].subject}</div>
+                        <div className="margin01" ></div>
                         <div className="lessonTime">{data[count].lessonTime.slice(0, -3)}</div>
                         <div className="lessonTime">{data[count].teacher}</div>
                         <div className="row lessonTime">

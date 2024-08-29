@@ -76,6 +76,7 @@
     .menu_active {
         position: absolute;
         width: 20vw;
+        max-width: 400px;
         top: calc(100% + 1vh);
         right: 12px;
         padding: 10px;
@@ -229,6 +230,12 @@
     }
     /* Фото пользователя */
     .avatar {
+        max-width: 250px;
+        max-height: 250px;
+        background-color: white;
+        border: 2px solid black;
+    }
+    .avatar_default {
         max-width: 250px;
         max-height: 250px;
     }

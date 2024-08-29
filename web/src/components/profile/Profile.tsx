@@ -50,7 +50,7 @@ function Profile(props: AuthProps) {
                             <div className="user_data">
                                 <div className="profile_border">
                                     <div className="usericon">
-                                        <img src={((props.avatar == '') ? "../../../images/defaulticon.png" : `http://localhost:3000/${props.avatar}` )} className="avatar"></img>
+                                        <img src={((props.avatar == '') ? "../../../images/defaulticon.png" : `http://localhost:3000/${props.avatar}` )} className={((props.avatar == '') ? "avatar_default" : "avatar" )}></img>
                                     </div>
                                     <div className="user_place_username">{pdata.name} {pdata.surname}</div> 
                                     <div className="user_place_username">Email: <span className="pdata">{pdata.email}</span></div> 
